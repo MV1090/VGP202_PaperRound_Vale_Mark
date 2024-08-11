@@ -1,29 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class ObjectScroll : MonoBehaviour
 {
     public float speed;
-    public float minYPos = -10;
+    public float minYPos = -5;
 
     Rigidbody2D rb;
-    BoxCollider2D bc;
+    public BoxCollider2D bc;
+
+    public GameObject ObjectGen;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
-        speed = 2;
+        //speed;
+
+        if (ObjectGen == null)
+            ObjectGen = FindTag(gameObject);
 
         rb.gravityScale = 0;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.velocity = Vector2.down * speed;
     }
 
-    private void OnEnable()
+    public virtual void OnEnable()
     {
         if (rb)
         {
@@ -36,7 +39,7 @@ public class ObjectScroll : MonoBehaviour
 
         rb.gravityScale = 0;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        rb.velocity = Vector2.down * speed;
+        rb.velocity = Vector2.down * speed * Time.deltaTime;
     }
 
     private Vector2 GetBotLeftCorner()
@@ -56,18 +59,34 @@ public class ObjectScroll : MonoBehaviour
         return new Vector2(bc.bounds.max.x, bc.bounds.max.y);
     }
 
-    public Vector2 GetNextSpawnPoint(float nextPieceExtent)
+    public virtual float GetNextSpawnPoint(float nextPieceExtent)
     {
-        return new Vector2(transform.position.x, bc.bounds.max.y + nextPieceExtent);
+        return bc.bounds.max.y + nextPieceExtent;
     }
 
+    //public virtual void GetNextSpawnPoint<T>(T nextPieceExtent)
+    //{
+
+    //}
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        if(transform.position.y < minYPos)
+        if (transform.position.y < minYPos)
         {
             ObjectPooler.Instance.ReturnToPool(gameObject);
-            LevelGen.Instance.RemoveActiveLevelPiece();
+            ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();
         }
+    }
+
+    public GameObject FindTag(GameObject obj)
+    {
+        if (obj.tag.Contains("Car"))
+            obj = GameObject.Find("CarGen");
+        else if(obj.tag.Contains("Left"))
+            obj = GameObject.Find("LeftHouseGen");
+        else if (obj.tag.Contains("Right"))
+            obj = GameObject.Find("RightHouseGen");
+
+        return obj;
     }
 }

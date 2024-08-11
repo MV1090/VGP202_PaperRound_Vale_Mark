@@ -17,9 +17,12 @@ public class ObjectPooler : Singleton<ObjectPooler>
     {
         LeftHouse,
         RightHouse,
-        OneHouseGap,
-        TwoHouseGap,
-        ThreeHouseGap,
+        OneHouseGapLeft,
+        OneHouseGapRight,
+        TwoHouseGapLeft,
+        TwoHouseGapRight,
+        ThreeHouseGapLeft,
+        ThreeHouseGapRight,
         Car,
         OneCarGap,
         TwoCarGap,
@@ -45,20 +48,20 @@ public class ObjectPooler : Singleton<ObjectPooler>
     public void AddToPool(PoolType newPool)
     {
         Queue<GameObject> objectPool = new Queue<GameObject>();
+               
         for (int i = 0; i < newPool.size; i++)
         {
             GameObject obj = Instantiate(newPool.prefab);
             obj.SetActive(false);
             objectPool.Enqueue(obj);
         }
-
         poolDictionary.Add(newPool.pieceType, objectPool);
     }
 
     public GameObject SpawnFromPool(GameObject prefab, Vector3 pos, Quaternion rotation)
-    {
-        LevelPieces curType = ReturnType(prefab.tag);
-              
+    {        
+        LevelPieces curType = ReturnType(prefab.tag);        
+        
         if(poolDictionary.ContainsKey(curType))
         {
             GameObject objToSpawn = poolDictionary[curType].Dequeue();
@@ -72,13 +75,16 @@ public class ObjectPooler : Singleton<ObjectPooler>
     }
 
     public GameObject SpawnFromPool(GameObject prefab)
-    {
-        LevelPieces curType = ReturnType(prefab.tag);                
+    {        
+        LevelPieces curType = ReturnType(prefab.tag);        
 
-            if (poolDictionary.ContainsKey(curType))
+        if (poolDictionary.ContainsKey(curType))
             {
-                GameObject objToSpawn = poolDictionary[curType].Dequeue();               
-                return objToSpawn;
+            if (poolDictionary[curType].Count == 0)
+             return null;
+               
+            GameObject objToSpawn = poolDictionary[curType].Dequeue();               
+            return objToSpawn;
             }
 
         Debug.LogWarning("Pool with key " + curType + " does not exist");
@@ -87,15 +93,18 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
     public LevelPieces ReturnType(string tag)
     {
-       if (tag.Equals("OneLeftHouse")) return LevelPieces.LeftHouse;
-       if (tag.Equals("OneRightHouse")) return LevelPieces.RightHouse; 
-       if (tag.Equals("OneHouseGap")) return LevelPieces.OneHouseGap;
-       if (tag.Equals("TwoHouseGap")) return LevelPieces.TwoHouseGap;
-       if (tag.Equals("ThreeHouseGap")) return LevelPieces.ThreeHouseGap;
-       if (tag.Equals("OneCar")) return LevelPieces.Car;
-       if (tag.Equals("OneCarGap")) return LevelPieces.OneCarGap;
-       if (tag.Equals("TwoCarGap")) return LevelPieces.TwoCarGap;
-       if (tag.Equals("ThreeCarGap")) return LevelPieces.ThreeCarGap;
+        if (tag.Equals("OneLeftHouse")) return LevelPieces.LeftHouse;
+        if (tag.Equals("OneRightHouse")) return LevelPieces.RightHouse;
+        if (tag.Equals("OneHouseGapLeft")) return LevelPieces.OneHouseGapLeft;
+        if (tag.Equals("TwoHouseGapLeft")) return LevelPieces.TwoHouseGapLeft;
+        if (tag.Equals("ThreeHouseGapLeft")) return LevelPieces.ThreeHouseGapLeft;
+        if (tag.Equals("OneHouseGapRight")) return LevelPieces.OneHouseGapRight;
+        if (tag.Equals("TwoHouseGapRight")) return LevelPieces.TwoHouseGapRight;
+        if (tag.Equals("ThreeHouseGapRight")) return LevelPieces.ThreeHouseGapRight;
+        if (tag.Equals("OneCar")) return LevelPieces.Car;
+        if (tag.Equals("OneCarGap")) return LevelPieces.OneCarGap;
+        if (tag.Equals("TwoCarGap")) return LevelPieces.TwoCarGap;
+        if (tag.Equals("ThreeCarGap")) return LevelPieces.ThreeCarGap;
 
         return LevelPieces.NotFound;
     }

@@ -4,15 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - OneHouseGap
-  - TwoHouseGap
-  - ThreeHouseGap
   - OneCarGap
   - TwoCarGap
   - ThreeCarGap
   - OneCar
   - OneLeftHouse
   - OneRightHouse
+  - OneHouseGapRight
+  - TwoHouseGapRight
+  - ThreeHouseGapRight
+  - OneHouseGapLeft
+  - TwoHouseGapLeft
+  - ThreeHouseGapLeft
   layers:
   - Default
   - TransparentFX

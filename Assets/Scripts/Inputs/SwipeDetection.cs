@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwipeDetection : MonoBehaviour
@@ -15,6 +16,7 @@ public class SwipeDetection : MonoBehaviour
     Vector2 endPos;
     float startTime;
     float endTime;
+       
 
     private void OnEnable()
     {
@@ -42,14 +44,14 @@ public class SwipeDetection : MonoBehaviour
 
     void CheckSwipe()
     {
-        if (Vector2.Distance(startPos, endPos) >= minDist && (endTime - startTime) <= maxTime) ;
+        if (Vector2.Distance(startPos, endPos) >= minDist && (endTime - startTime) <= maxTime)
         {
             Vector2 dir = (endPos - startPos).normalized;
             SwipeDirection(dir);
         }
     }
 
-    void SwipeDirection(Vector2 dir)
+   public virtual void SwipeDirection(Vector2 dir)
     {
         if (Vector2.Dot(Vector2.up, dir) >= distThreshold)
             Debug.Log("Swipe up");
@@ -60,13 +62,8 @@ public class SwipeDetection : MonoBehaviour
         if (Vector2.Dot(Vector2.right, dir) >= distThreshold)
             Debug.Log("Swipe right");
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+   
+       // Update is called once per frame
     void Update()
     {
         
