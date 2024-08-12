@@ -9,8 +9,7 @@ public class HouseGen : ObjectGen
     // Start is called before the first frame update
     public override void Start()
     {
-        base.Start();
-                
+        base.Start();                
 
         GameObject firstPiecePivot = ObjectPooler.Instance.SpawnFromPool(pieces[randNum].prefab, spawnPoint.position, spawnPoint.rotation);
         currentLevelPieces.Add(firstPiecePivot);

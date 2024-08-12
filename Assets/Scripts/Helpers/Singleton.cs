@@ -13,7 +13,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
                instance = FindFirstObjectByType<T>();
 
             }
-            catch(NullReferenceException e)
+            catch(NullReferenceException)
             {
                 GameObject obj = new GameObject();
                 obj.name = typeof(T).Name;

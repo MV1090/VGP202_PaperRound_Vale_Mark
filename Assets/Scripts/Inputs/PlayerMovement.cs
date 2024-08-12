@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class PlayerSwipe : SwipeDetection
+public class PlayerMovement : SwipeDetection
 {
     [SerializeField] Transform[] nextMovePos;
     int positionIndex;
