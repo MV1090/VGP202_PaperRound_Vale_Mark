@@ -14,9 +14,5 @@ public class HouseScroll : ObjectScroll
     {
         base.Update();
     }
-    public override void OnEnable()
-    {
-        speed = 4.0f;
-        base.OnEnable();
-    }
+   
 }

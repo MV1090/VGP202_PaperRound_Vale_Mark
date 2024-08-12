@@ -691,7 +691,8 @@ MonoBehaviour:
   - {fileID: 2005275303}
   - {fileID: 1109438915}
   - {fileID: 529461520}
-  speed: 2
+  speed: 7.5
+  angleSpeed: 0.3
   angle: 0
   playerMove: 0
 --- !u!212 &749616036
