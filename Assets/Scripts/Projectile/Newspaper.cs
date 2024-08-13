@@ -19,7 +19,7 @@ public class Newspaper : Projectile
         startingPos = new Vector2(transform.position.x, transform.position.y); 
         targetPos = PlayerThrow.Instance.touchPos;
         throwVector = (targetPos - startingPos).normalized * speed;
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 1);
                 
     }
     // Update is called once per frame
@@ -64,6 +64,7 @@ public class Newspaper : Projectile
             }               
 
             collision.gameObject.GetComponent<HouseScroll>().hasBeenHit = true;
+            GameManager.Instance.score ++;
             Destroy(gameObject);
             Debug.Log("Hit House");
         }

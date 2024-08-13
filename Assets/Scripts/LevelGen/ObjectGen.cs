@@ -23,8 +23,7 @@ public class ObjectGen : MonoBehaviour
             ObjectPooler.Instance.AddToPool(curPieces);
         }
 
-        randNum = Random.Range(0, pieces.Count);
-       
+        randNum = Random.Range(0, pieces.Count);       
     }
 
     virtual public void SpawnLevelPiece()
@@ -42,6 +41,8 @@ public class ObjectGen : MonoBehaviour
         currentLevelPieces.RemoveAt(0);
     }    
     
+    // remove all pieces method needed.
+    //reset pieces method needed.
     public float GetExtents(string tag)
     {
         if (tag.Contains("One"))

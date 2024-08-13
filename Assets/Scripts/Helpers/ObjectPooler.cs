@@ -56,7 +56,9 @@ public class ObjectPooler : Singleton<ObjectPooler>
             objectPool.Enqueue(obj);
         }
         poolDictionary.Add(newPool.pieceType, objectPool);
-    }
+    }   
+
+    //Remove from pool needed
 
     public GameObject SpawnFromPool(GameObject prefab, Vector3 pos, Quaternion rotation)
     {        

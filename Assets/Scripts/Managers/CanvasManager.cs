@@ -11,7 +11,7 @@ public class CanvasManager : Singleton<CanvasManager>
     public AudioMixer audioMixer;   
 
     [Header("Text")]   
-    public TextMeshPro scoreText;
+    public TMP_Text scoreText;
        
 
     // Start is called before the first frame update
@@ -19,13 +19,14 @@ public class CanvasManager : Singleton<CanvasManager>
     {       
         if(scoreText)
         {
-            GameManager.Instance.OnScoreValueChanged.AddListener(UpdateMoneyText);
+            GameManager.Instance.OnScoreValueChanged.AddListener(UpdatePaperText);
+
             scoreText.text = GameManager.Instance.score.ToString();
         }                          
     }
-    void UpdateMoneyText(int value)
+    void UpdatePaperText(int value)
     {
-        scoreText.text = value.ToString();
+        scoreText.text = "Papers: " + value.ToString();
     }          
      
     // Update is called once per frame
