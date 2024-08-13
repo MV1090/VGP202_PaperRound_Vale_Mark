@@ -32,9 +32,20 @@ public class HouseGen : ObjectGen
         currentLevelPieces.Add(newPiece);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void ResetAllPieces()
     {
-        
+        if (currentLevelPieces.Count > 0)
+            return;
+
+        base.ResetAllPieces();
+
+        GameObject firstPiecePivot = ObjectPooler.Instance.SpawnFromPool(pieces[randNum].prefab, spawnPoint.position, spawnPoint.rotation);
+        currentLevelPieces.Add(firstPiecePivot);
+
+        for (int i = 0; i <= startingPieces; i++)
+        {
+            SpawnLevelPiece();
+        }
     }
+
 }

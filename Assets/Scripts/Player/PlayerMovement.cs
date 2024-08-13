@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMovement : SwipeDetection
 {
     [SerializeField] Transform[] nextMovePos;
+    [SerializeField] GameState gameState;
     int positionIndex;
     public float speed;
     [Range(0f, 1f)]
@@ -27,6 +28,14 @@ public class PlayerMovement : SwipeDetection
         positionIndex = 1;
         transform.position = nextMovePos[positionIndex].position;
         playerMove = PlayerDirection.Stationary;
+    }
+
+    public void ResetPlayer()
+    {
+        positionIndex = 1;
+        transform.position = nextMovePos[positionIndex].position;
+        playerMove = PlayerDirection.Stationary;
+        gameObject.SetActive(true);
     }
 
     public override void SwipeDirection(Vector2 dir)
@@ -80,5 +89,14 @@ public class PlayerMovement : SwipeDetection
 
         transform. rotation = Quaternion.Euler(0,0, angle);
         transform.position = Vector3.MoveTowards(transform.position, nextMovePos[positionIndex].position, speed * Time.deltaTime);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("OneCar"))
+        {
+            GameManager.Instance.gameOver = true;
+            gameState.JumpToGameOver();
+            gameObject.SetActive(false);
+        }
     }
 }

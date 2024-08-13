@@ -16,14 +16,13 @@ public class ObjectScroll : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
-        //speed;
-
+        
         if (ObjectGen == null)
             ObjectGen = FindTag(gameObject);
 
         rb.gravityScale = 0;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        rb.velocity = Vector2.down * speed;
+        rb.velocity = Vector2.down * speed; 
     }
 
     public virtual void OnEnable()
@@ -75,6 +74,12 @@ public class ObjectScroll : MonoBehaviour
         {
             ObjectPooler.Instance.ReturnToPool(gameObject);
             ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();
+        }
+
+        if(GameManager.Instance.gameOver == true)
+        {
+            ObjectPooler.Instance.ReturnToPool(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

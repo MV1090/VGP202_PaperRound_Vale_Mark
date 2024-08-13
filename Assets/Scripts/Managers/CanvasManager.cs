@@ -21,7 +21,7 @@ public class CanvasManager : Singleton<CanvasManager>
         {
             GameManager.Instance.OnScoreValueChanged.AddListener(UpdatePaperText);
 
-            scoreText.text = GameManager.Instance.score.ToString();
+            scoreText.text = "Papers: " + GameManager.Instance.score.ToString();
         }                          
     }
     void UpdatePaperText(int value)

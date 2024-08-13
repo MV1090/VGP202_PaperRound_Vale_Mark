@@ -12,11 +12,14 @@ public class Newspaper : Projectile
     [SerializeField] float rotationSpeed;
     [SerializeField] float rotationAmount;
 
+   
+
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
-        startingPos = new Vector2(transform.position.x, transform.position.y); 
+        startingPos = new Vector2(transform.position.x, transform.position.y);
+        
         targetPos = PlayerThrow.Instance.touchPos;
         throwVector = (targetPos - startingPos).normalized * speed;
         Destroy(gameObject, 1);

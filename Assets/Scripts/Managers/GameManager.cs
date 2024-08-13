@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 
 
 public class GameManager : Singleton<GameManager>
-{   
-        
+{
+
+    public bool gameOver;
     public UnityEvent<int> OnScoreValueChanged;
         
     private int _score = 0;
@@ -23,5 +24,10 @@ public class GameManager : Singleton<GameManager>
         }
 
     }
-        
+
+    private void Start()
+    {
+        gameOver = false;
+    }
+
 }

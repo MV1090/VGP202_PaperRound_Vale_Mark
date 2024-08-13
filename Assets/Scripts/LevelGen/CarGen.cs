@@ -36,5 +36,28 @@ public class CarGen : ObjectGen
         currentLevelPieces.Add(newPiece);
     }
 
-    
+    public override void ResetAllPieces()
+    {
+        if (currentLevelPieces.Count > 0)
+            return;
+
+        base.ResetAllPieces();
+
+        int randSpawn = Random.Range(0, spawnPoint.Length);
+
+
+        GameObject firstPiecePivot = ObjectPooler.Instance.SpawnFromPool(pieces[randNum].prefab, spawnPoint[randSpawn].position, spawnPoint[randSpawn].rotation);
+        currentLevelPieces.Add(firstPiecePivot);
+
+        for (int i = 0; i <= startingPieces; i++)
+        {
+            SpawnLevelPiece();
+        }
+    }
+
+
+
+
+
+
 }

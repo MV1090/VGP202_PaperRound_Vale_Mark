@@ -25,6 +25,13 @@ public class ObjectGen : MonoBehaviour
 
         randNum = Random.Range(0, pieces.Count);       
     }
+    public virtual void Update()
+    {
+        if (GameManager.Instance.gameOver == true)
+        { 
+            RemoveAllLevelPieces();
+        }
+    }
 
     virtual public void SpawnLevelPiece()
     {
@@ -39,10 +46,20 @@ public class ObjectGen : MonoBehaviour
 
         SpawnLevelPiece();
         currentLevelPieces.RemoveAt(0);
-    }    
+    }
+
+    private void RemoveAllLevelPieces() 
+    {
+        currentLevelPieces.Clear();        
+    }
+
+    virtual public void ResetAllPieces()
+    {
+        
+        GameManager.Instance.gameOver = false;
+        randNum = Random.Range(0, pieces.Count);
+    }
     
-    // remove all pieces method needed.
-    //reset pieces method needed.
     public float GetExtents(string tag)
     {
         if (tag.Contains("One"))
