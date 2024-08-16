@@ -20,13 +20,13 @@ public class ObjectPooler : Singleton<ObjectPooler>
         OneHouseGapLeft,
         OneHouseGapRight,
         TwoHouseGapLeft,
-        TwoHouseGapRight,
-        ThreeHouseGapLeft,
-        ThreeHouseGapRight,
+        TwoHouseGapRight,        
         Car,
         OneCarGap,
-        TwoCarGap,
-        ThreeCarGap,
+        TwoCarGap,       
+        PickUpBlue,
+        PickUpRed,
+        PickUpGreen,
         NotFound
     }
 
@@ -97,15 +97,15 @@ public class ObjectPooler : Singleton<ObjectPooler>
         if (tag.Equals("OneLeftHouse")) return LevelPieces.LeftHouse;
         if (tag.Equals("OneRightHouse")) return LevelPieces.RightHouse;
         if (tag.Equals("OneHouseGapLeft")) return LevelPieces.OneHouseGapLeft;
-        if (tag.Equals("TwoHouseGapLeft")) return LevelPieces.TwoHouseGapLeft;
-        if (tag.Equals("ThreeHouseGapLeft")) return LevelPieces.ThreeHouseGapLeft;
+        if (tag.Equals("TwoHouseGapLeft")) return LevelPieces.TwoHouseGapLeft;        
         if (tag.Equals("OneHouseGapRight")) return LevelPieces.OneHouseGapRight;
-        if (tag.Equals("TwoHouseGapRight")) return LevelPieces.TwoHouseGapRight;
-        if (tag.Equals("ThreeHouseGapRight")) return LevelPieces.ThreeHouseGapRight;
+        if (tag.Equals("TwoHouseGapRight")) return LevelPieces.TwoHouseGapRight;       
         if (tag.Equals("OneCar")) return LevelPieces.Car;
         if (tag.Equals("OneCarGap")) return LevelPieces.OneCarGap;
-        if (tag.Equals("TwoCarGap")) return LevelPieces.TwoCarGap;
-        if (tag.Equals("ThreeCarGap")) return LevelPieces.ThreeCarGap;
+        if (tag.Equals("TwoCarGap")) return LevelPieces.TwoCarGap;        
+        if (tag.Equals("PickUpBlue")) return LevelPieces.PickUpBlue; 
+        if (tag.Equals("PickUpRed")) return LevelPieces.PickUpRed; 
+        if (tag.Equals("PickUpGreen")) return LevelPieces.PickUpGreen;
 
         return LevelPieces.NotFound;
     }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5062855727900736135}
   m_Layer: 0
   m_Name: ThreeHouseGapRight
-  m_TagString: ThreeHouseGapRight
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,3 +122,4 @@ MonoBehaviour:
   minYPos: -5
   bc: {fileID: 0}
   ObjectGen: {fileID: 0}
+  hasBeenHit: 0

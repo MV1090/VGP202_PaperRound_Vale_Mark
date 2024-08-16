@@ -175,3 +175,4 @@ MonoBehaviour:
   minYPos: -5
   bc: {fileID: 0}
   ObjectGen: {fileID: 0}
+  hasBeenHit: 0

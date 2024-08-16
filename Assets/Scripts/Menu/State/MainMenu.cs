@@ -14,7 +14,7 @@ public class MainMenu : BaseMenu
     public override void EnterState()
     {
         base.EnterState();
-        Time.timeScale = 0.0f;
+        Time.timeScale = 0.0f;           
     }
 
     public override void ExitState()

@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.VFX;
 
 //[RequireComponent(typeof(ObjectPooler))]
 public class ObjectGen : MonoBehaviour 
@@ -11,7 +8,7 @@ public class ObjectGen : MonoBehaviour
     public int startingPieces;
 
     public List<ObjectPooler.PoolType> pieces;
-    public List<GameObject> currentLevelPieces = new List<GameObject>();
+    public List<GameObject> currentLevelPieces = new List<GameObject>();    
 
     public int randNum;
     public GameObject newPiece;
@@ -23,7 +20,7 @@ public class ObjectGen : MonoBehaviour
             ObjectPooler.Instance.AddToPool(curPieces);
         }
 
-        randNum = Random.Range(0, pieces.Count);       
+        randNum = Random.Range(0, pieces.Count);        
     }
     public virtual void Update()
     {
@@ -35,8 +32,7 @@ public class ObjectGen : MonoBehaviour
 
     virtual public void SpawnLevelPiece()
     {
-       randNum = Random.Range(0, pieces.Count);
-       newPiece = ObjectPooler.Instance.SpawnFromPool(pieces[randNum].prefab);        
+             
     }
 
     virtual public void RemoveActiveLevelPiece()
@@ -44,18 +40,17 @@ public class ObjectGen : MonoBehaviour
         if(currentLevelPieces.Count <= 0)
             return;
 
-        SpawnLevelPiece();
+        SpawnLevelPiece();        
         currentLevelPieces.RemoveAt(0);
     }
 
-    private void RemoveAllLevelPieces() 
+    virtual public void RemoveAllLevelPieces() 
     {
-        currentLevelPieces.Clear();        
+        currentLevelPieces.Clear();
     }
-
+     
     virtual public void ResetAllPieces()
-    {
-        
+    {        
         GameManager.Instance.gameOver = false;
         randNum = Random.Range(0, pieces.Count);
     }
@@ -68,6 +63,8 @@ public class ObjectGen : MonoBehaviour
             return 1f;
         else if (tag.Contains("Three"))
             return 1.5f;
+        else if (tag.Contains("PickUp"))
+            return 0.5f;
         else
             return 0;
     }

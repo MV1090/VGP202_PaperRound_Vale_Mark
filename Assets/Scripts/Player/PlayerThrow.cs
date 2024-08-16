@@ -46,6 +46,9 @@ public class PlayerThrow : Singleton<PlayerThrow>
 
     void Throw()
     {
+        if (Time.timeScale == 0)
+            return; 
+
         if (Vector2.Distance(startPos, endPos) <= minDist)
         {
             if (startPos.x > transform.position.x)

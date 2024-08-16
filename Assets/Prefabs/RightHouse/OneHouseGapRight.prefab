@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  minYPos: -5
+  minYPos: -10
   bc: {fileID: 0}
   ObjectGen: {fileID: 0}
+  hasBeenHit: 0

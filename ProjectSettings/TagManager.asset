@@ -6,16 +6,16 @@ TagManager:
   tags:
   - OneCarGap
   - TwoCarGap
-  - ThreeCarGap
   - OneCar
   - OneLeftHouse
   - OneRightHouse
   - OneHouseGapRight
   - TwoHouseGapRight
-  - ThreeHouseGapRight
   - OneHouseGapLeft
   - TwoHouseGapLeft
-  - ThreeHouseGapLeft
+  - PickUpBlue
+  - PickUpRed
+  - PickUpGreen
   layers:
   - Default
   - TransparentFX

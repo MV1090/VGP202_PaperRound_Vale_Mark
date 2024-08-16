@@ -58,16 +58,11 @@ public class ObjectScroll : MonoBehaviour
         return new Vector2(bc.bounds.max.x, bc.bounds.max.y);
     }
 
-    public virtual float GetNextSpawnPoint(float nextPieceExtent)
+    public virtual Vector2 GetNextSpawnPoint(float nextPieceExtent)
     {
-        return bc.bounds.max.y + nextPieceExtent;
+        return new Vector2(transform.position.x , bc.bounds.max.y + nextPieceExtent);
     }
-
-    //public virtual void GetNextSpawnPoint<T>(T nextPieceExtent)
-    //{
-
-    //}
-    // Update is called once per frame
+      
     public virtual void Update()
     {
         if (transform.position.y < minYPos)
@@ -91,6 +86,8 @@ public class ObjectScroll : MonoBehaviour
             obj = GameObject.Find("LeftHouseGen");
         else if (obj.tag.Contains("Right"))
             obj = GameObject.Find("RightHouseGen");
+        else if (obj.tag.Contains("PickUp"))
+            obj = GameObject.Find("CarGen");
 
         return obj;
     }
