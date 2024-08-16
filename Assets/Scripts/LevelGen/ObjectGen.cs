@@ -32,7 +32,9 @@ public class ObjectGen : MonoBehaviour
 
     virtual public void SpawnLevelPiece()
     {
-             
+        randNum = Random.Range(0, pieces.Count);
+
+        newPiece = ObjectPooler.Instance.SpawnFromPool(pieces[randNum].prefab);
     }
 
     virtual public void RemoveActiveLevelPiece()

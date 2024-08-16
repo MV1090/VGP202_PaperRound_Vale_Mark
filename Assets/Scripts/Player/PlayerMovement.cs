@@ -5,6 +5,7 @@ public class PlayerMovement : SwipeDetection
 {
     [SerializeField] Transform[] nextMovePos;
     [SerializeField] GameState gameState;
+    [SerializeField] CarGen CarGen;
     int positionIndex;
     public float speed;
     [Range(0f, 1f)]
@@ -22,7 +23,6 @@ public class PlayerMovement : SwipeDetection
     [SerializeField] private PlayerDirection playerMove;
     private PlayerDirection lastPosition;
 
-    // Start is called before the first frame update
     void Start()
     {
         positionIndex = 1;
@@ -61,7 +61,6 @@ public class PlayerMovement : SwipeDetection
         }                
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(transform.position == nextMovePos[positionIndex].position)
@@ -94,9 +93,22 @@ public class PlayerMovement : SwipeDetection
     {
         if (collision.gameObject.CompareTag("OneCar"))
         {
-            GameManager.Instance.gameOver = true;
-            gameState.JumpToGameOver();
-            gameObject.SetActive(false);
+            if (GameManager.Instance.activeBonus == GameManager.ActiveBonus.CowCatcher)
+            {
+                GameManager.Instance.score += 10;
+                ObjectPooler.Instance.ReturnToPool(collision.gameObject);
+                CarGen.RemoveActiveLevelPiece();
+            }
+            else
+            {
+                GameManager.Instance.gameOver = true;
+                gameState.JumpToGameOver();
+                gameObject.SetActive(false);
+
+            }
+           
         }
     }
+
+
 }

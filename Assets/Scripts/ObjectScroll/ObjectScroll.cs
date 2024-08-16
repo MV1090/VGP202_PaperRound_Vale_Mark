@@ -87,7 +87,7 @@ public class ObjectScroll : MonoBehaviour
         else if (obj.tag.Contains("Right"))
             obj = GameObject.Find("RightHouseGen");
         else if (obj.tag.Contains("PickUp"))
-            obj = GameObject.Find("CarGen");
+            obj = GameObject.Find("PickUpGen");
 
         return obj;
     }

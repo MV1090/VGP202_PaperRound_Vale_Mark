@@ -21,11 +21,7 @@ public class HouseGen : ObjectGen
     public override void SpawnLevelPiece()
     {
         base.SpawnLevelPiece();
-
-        randNum = Random.Range(0, pieces.Count);
         
-        newPiece = ObjectPooler.Instance.SpawnFromPool(pieces[randNum].prefab);
-
         Vector2 spawnPosition = new Vector2(spawnPoint.position.x, currentLevelPieces[currentLevelPieces.Count - 1].GetComponent<ObjectScroll>().GetNextSpawnPoint(GetExtents(newPiece.tag)).y);
        
         newPiece.transform.SetPositionAndRotation(spawnPosition, Quaternion.identity);

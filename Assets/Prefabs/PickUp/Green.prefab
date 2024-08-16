@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7557161138030967485}
   - component: {fileID: 405141302134604810}
   - component: {fileID: 5686189039476342975}
-  - component: {fileID: 7854080816349667}
-  - component: {fileID: 4599725349943957764}
+  - component: {fileID: -5232236471475792751}
+  - component: {fileID: 5555164884737720530}
   m_Layer: 0
   m_Name: Green
   m_TagString: PickUpGreen
@@ -160,7 +160,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7854080816349667
+--- !u!114 &-5232236471475792751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,14 +169,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7299465256290330477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058da50cbddd5a84591103b5fcae5132, type: 3}
+  m_Script: {fileID: 11500000, guid: 02314f02c1cb2fc40b1778291832e323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
   minYPos: -5
   bc: {fileID: 0}
   ObjectGen: {fileID: 0}
---- !u!114 &4599725349943957764
+--- !u!114 &5555164884737720530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,3 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c769fd881c72e47a5cbae8ef96bccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectGen: {fileID: 0}
+  bonusLength: 10
+  currentPickUp: 1

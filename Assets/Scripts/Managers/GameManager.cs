@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
+
 
 
 public class GameManager : Singleton<GameManager>
@@ -11,7 +7,14 @@ public class GameManager : Singleton<GameManager>
 
     public bool gameOver;
     public UnityEvent<int> OnScoreValueChanged;
-        
+
+    public enum ActiveBonus 
+    {
+        Normal, DoubleScore, CowCatcher
+    }
+
+    public ActiveBonus activeBonus; 
+
     private int _score = 0;
     public int score
     {
@@ -28,6 +31,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         gameOver = false;
+        activeBonus = ActiveBonus.Normal;
     }
 
 }

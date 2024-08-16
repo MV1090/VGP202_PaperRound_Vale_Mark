@@ -67,6 +67,10 @@ public class Newspaper : Projectile
             }               
 
             collision.gameObject.GetComponent<HouseScroll>().hasBeenHit = true;
+            if(GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
+            {
+                GameManager.Instance.score ++;
+            }
             GameManager.Instance.score ++;
             Destroy(gameObject);
             Debug.Log("Hit House");

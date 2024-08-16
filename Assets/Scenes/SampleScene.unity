@@ -201,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &62049584
 RectTransform:
   m_ObjectHideFlags: 0
@@ -384,6 +384,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 138937811}
+        m_TargetAssemblyTypeName: ObjectGen, Assembly-CSharp
+        m_MethodName: ResetAllPieces
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &79014741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +434,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79014738}
   m_CullTransparentMesh: 1
+--- !u!1 &87602936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87602937}
+  m_Layer: 0
+  m_Name: '***Singletons***'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &87602937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87602936}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.063867, y: 2.5931365, z: 0.004388672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &102343208
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +599,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102343208}
   m_CullTransparentMesh: 1
+--- !u!1 &138937810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 138937812}
+  - component: {fileID: 138937811}
+  m_Layer: 0
+  m_Name: PickUpGen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &138937811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138937810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbba96a0953e1342a913e741f563bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPieces: 1
+  pieces:
+  - prefab: {fileID: 7299465256290330477, guid: 9bac793b77103f24798c2f840a02fc1d, type: 3}
+    pieceType: 11
+    size: 1
+  currentLevelPieces: []
+  randNum: 0
+  newPiece: {fileID: 0}
+  spawnPoint:
+  - {fileID: 370092955}
+  - {fileID: 1304747840}
+  - {fileID: 31806337}
+  - {fileID: 45575145}
+--- !u!4 &138937812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138937810}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 299.28714, y: 1129.2708, z: -5.1537094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &205026072
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +790,18 @@ MonoBehaviour:
       - m_Target: {fileID: 749616035}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: ResetPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 138937811}
+        m_TargetAssemblyTypeName: PickUpGen, Assembly-CSharp
+        m_MethodName: ResetAllPieces
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1717,6 +1829,7 @@ MonoBehaviour:
   OnScoreValueChanged:
     m_PersistentCalls:
       m_Calls: []
+  activeBonus: 0
 --- !u!1 &593150676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,7 +2358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &749616035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2267,6 +2380,7 @@ MonoBehaviour:
   - {fileID: 1109438915}
   - {fileID: 529461520}
   gameState: {fileID: 1206811106}
+  CarGen: {fileID: 1304985745}
   speed: 7.5
   angleSpeed: 0.3
   angle: 0
@@ -2401,7 +2515,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 0.6}
+  m_Size: {x: 0.3, y: 0.55}
   m_EdgeRadius: 0
 --- !u!1 &843747211
 GameObject:
@@ -2903,6 +3017,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084802378}
   m_CullTransparentMesh: 1
+--- !u!1 &1090648809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1090648810}
+  m_Layer: 0
+  m_Name: '***GanObjects***'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1090648810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090648809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.063867, y: 2.5931365, z: 0.004388672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1101371033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1101371034}
+  m_Layer: 0
+  m_Name: '***Lanes***'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1101371034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101371033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.063867, y: 2.5931365, z: 0.004388672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109438914
 GameObject:
   m_ObjectHideFlags: 0
@@ -3340,15 +3516,6 @@ MonoBehaviour:
   - prefab: {fileID: 3449337840968914117, guid: 9dc39f995397b184cb952353aceccb83, type: 3}
     pieceType: 8
     size: 15
-  - prefab: {fileID: 4038474467899842616, guid: 4d3ecfaf40c2b1645a9cb3c482a0366a, type: 3}
-    pieceType: 9
-    size: 1
-  - prefab: {fileID: 7299465256290330477, guid: 9bac793b77103f24798c2f840a02fc1d, type: 3}
-    pieceType: 11
-    size: 1
-  - prefab: {fileID: 1882330107447320063, guid: 987c18c966c9b7249aaf4d7874241f24, type: 3}
-    pieceType: 10
-    size: 1
   currentLevelPieces: []
   randNum: 0
   newPiece: {fileID: 0}
@@ -3357,7 +3524,6 @@ MonoBehaviour:
   - {fileID: 31806337}
   - {fileID: 1304747840}
   - {fileID: 370092955}
-  pieceTracker: 
 --- !u!1 &1340977949
 GameObject:
   m_ObjectHideFlags: 0
@@ -4496,16 +4662,20 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 588868079}
-  - {fileID: 1710343296}
-  - {fileID: 843747214}
-  - {fileID: 1340977951}
-  - {fileID: 690807376}
   - {fileID: 1134852688}
+  - {fileID: 843747214}
+  - {fileID: 1101371034}
+  - {fileID: 690807376}
   - {fileID: 1126039703}
+  - {fileID: 1782045769}
+  - {fileID: 1090648810}
+  - {fileID: 138937812}
   - {fileID: 1304985744}
   - {fileID: 1766895496}
   - {fileID: 1527334017}
-  - {fileID: 1782045769}
+  - {fileID: 87602937}
   - {fileID: 749616037}
   - {fileID: 675482022}
+  - {fileID: 588868079}
+  - {fileID: 1710343296}
+  - {fileID: 1340977951}

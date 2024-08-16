@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8830089165190084996}
   - component: {fileID: 3450529026797661705}
   - component: {fileID: 7885497108376522727}
-  - component: {fileID: 8976033254763527565}
   - component: {fileID: 7159331685838120681}
+  - component: {fileID: 4296464873103652669}
   m_Layer: 0
   m_Name: Red
   m_TagString: PickUpRed
@@ -160,22 +160,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8976033254763527565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1882330107447320063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058da50cbddd5a84591103b5fcae5132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  minYPos: -5
-  bc: {fileID: 0}
-  ObjectGen: {fileID: 0}
 --- !u!114 &7159331685838120681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +172,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c769fd881c72e47a5cbae8ef96bccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectGen: {fileID: 0}
+--- !u!114 &4296464873103652669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882330107447320063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02314f02c1cb2fc40b1778291832e323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  minYPos: -5
+  bc: {fileID: 0}
+  ObjectGen: {fileID: 0}
