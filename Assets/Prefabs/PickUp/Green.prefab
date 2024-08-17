@@ -191,3 +191,4 @@ MonoBehaviour:
   ObjectGen: {fileID: 0}
   bonusLength: 10
   currentPickUp: 1
+  color: {r: 0, g: 1, b: 0, a: 1}

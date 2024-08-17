@@ -633,6 +633,9 @@ MonoBehaviour:
   - prefab: {fileID: 7299465256290330477, guid: 9bac793b77103f24798c2f840a02fc1d, type: 3}
     pieceType: 11
     size: 1
+  - prefab: {fileID: 4038474467899842616, guid: 4d3ecfaf40c2b1645a9cb3c482a0366a, type: 3}
+    pieceType: 9
+    size: 1
   currentLevelPieces: []
   randNum: 0
   newPiece: {fileID: 0}
@@ -1791,6 +1794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 588868079}
   - component: {fileID: 588868080}
+  - component: {fileID: 588868081}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1830,6 +1834,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   activeBonus: 0
+--- !u!114 &588868081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588868078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ace7bb422113c4784a6b0788fdf9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &593150676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,7 +2398,7 @@ MonoBehaviour:
   gameState: {fileID: 1206811106}
   CarGen: {fileID: 1304985745}
   speed: 7.5
-  angleSpeed: 0.3
+  angleSpeed: 1
   angle: 0
   playerMove: 0
 --- !u!212 &749616036

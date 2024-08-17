@@ -13,6 +13,7 @@ public class PickUp : MonoBehaviour
     }
 
     [SerializeField] PickUpType currentPickUp;
+    [SerializeField] Color color;
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +37,10 @@ public class PickUp : MonoBehaviour
             switch (currentPickUp)
             {
                 case PickUpType.DoubleScore:
-                    StartCoroutine(setBonus(GameManager.ActiveBonus.DoubleScore, bonusLength));
+                    CoroutineManager.Instance.StartCoroutine(setBonus(GameManager.ActiveBonus.DoubleScore, bonusLength, color));
                     break;
                 case PickUpType.CowCatcher:
-                    StartCoroutine(setBonus(GameManager.ActiveBonus.CowCatcher, bonusLength));
+                    CoroutineManager.Instance.StartCoroutine(setBonus(GameManager.ActiveBonus.CowCatcher, bonusLength, color));
                     break;
             }            
         }     
@@ -53,11 +54,11 @@ public class PickUp : MonoBehaviour
         return obj;
     }
 
-    IEnumerator setBonus(GameManager.ActiveBonus bonus, float secondsActive)
+    IEnumerator setBonus(GameManager.ActiveBonus bonus, float secondsActive, Color color)
     {
         sr.enabled = false;
         GameManager.Instance.activeBonus = bonus;
-        GameObject.Find("Player").GetComponent<SpriteRenderer>().color = Color.red;
+        GameObject.Find("Player").GetComponent<SpriteRenderer>().color = color;
         yield return new WaitForSeconds(secondsActive);
         GameObject.Find("Player").GetComponent<SpriteRenderer>().color = Color.white;
         GameManager.Instance.activeBonus = GameManager.ActiveBonus.Normal;

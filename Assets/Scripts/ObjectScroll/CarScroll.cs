@@ -8,7 +8,6 @@ public class CarScroll : ObjectScroll
     {
         speed = 4.0f;
         base.Start();
-        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.Find("").GetComponent<Collider2D>());
     }
 
     public override void Update()

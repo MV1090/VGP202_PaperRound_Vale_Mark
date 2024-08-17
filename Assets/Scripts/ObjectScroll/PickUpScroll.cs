@@ -12,6 +12,16 @@ public class PickUpScroll :ObjectScroll
 
     public override void Update()
     {
-       
+        if (transform.position.y < minYPos)
+        {
+            ObjectPooler.Instance.ReturnToPool(gameObject);
+            ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();
+        }
+
+        if (GameManager.Instance.gameOver == true)
+        {
+            ObjectPooler.Instance.ReturnToPool(gameObject);
+            gameObject.SetActive(false);
+        }
     }
 }

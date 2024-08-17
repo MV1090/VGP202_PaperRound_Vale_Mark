@@ -32,6 +32,9 @@ public class Newspaper : Projectile
         
        setProjectilePos();
        setProjectileRotation();
+
+        if(GameManager.Instance.gameOver == true)
+            Destroy(gameObject);
     }
 
     public override void setProjectilePos()

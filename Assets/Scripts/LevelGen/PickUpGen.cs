@@ -43,6 +43,8 @@ public class PickUpGen : ObjectGen
 
     public override void RemoveActiveLevelPiece()
     {
+        if (currentLevelPieces.Count <= 0)
+            return;
         currentLevelPieces.RemoveAt(0);               
     }
 
@@ -50,7 +52,7 @@ public class PickUpGen : ObjectGen
     {
         while (true)
         {
-            spawnTime = Random.Range(10, 10);
+            spawnTime = Random.Range(30, 45);
 
             yield return new WaitForSeconds(spawnTime);
 

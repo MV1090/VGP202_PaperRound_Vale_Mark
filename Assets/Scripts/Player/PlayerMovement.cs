@@ -101,6 +101,7 @@ public class PlayerMovement : SwipeDetection
             }
             else
             {
+                GameManager.Instance.activeBonus = GameManager.ActiveBonus.Normal;
                 GameManager.Instance.gameOver = true;
                 gameState.JumpToGameOver();
                 gameObject.SetActive(false);
