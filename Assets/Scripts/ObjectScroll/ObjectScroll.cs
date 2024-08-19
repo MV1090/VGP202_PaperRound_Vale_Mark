@@ -6,7 +6,7 @@ public class ObjectScroll : MonoBehaviour
     public float speed;
     public float minYPos = -5;
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     public BoxCollider2D bc;
 
     public GameObject ObjectGen;

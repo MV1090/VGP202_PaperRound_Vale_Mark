@@ -15,7 +15,7 @@ public class PlayerThrow : Singleton<PlayerThrow>
     [SerializeField] Transform spawnLeft;
     [SerializeField] Transform spawnRight;  
     [SerializeField] GameObject NewspaperPrefab;
-
+    [SerializeField] AudioClip throwSound;
     public Vector2 touchPos;
 
 
@@ -61,7 +61,8 @@ public class PlayerThrow : Singleton<PlayerThrow>
             {
                 Debug.Log("Player Tapped Left");
                 Instantiate(NewspaperPrefab, spawnLeft.position, Quaternion.identity);
-            }                                     
+            }
+            AudioClipManager.Instance.audioSource.PlayOneShot(throwSound);
         }
     }   
 

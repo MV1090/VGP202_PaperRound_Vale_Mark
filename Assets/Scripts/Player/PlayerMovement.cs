@@ -3,15 +3,23 @@ using UnityEngine;
 
 public class PlayerMovement : SwipeDetection
 {
+    AudioSource audioSource;
+
     [SerializeField] Transform[] nextMovePos;
     [SerializeField] GameState gameState;
     [SerializeField] CarGen CarGen;
+
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip destroyCar;
+    [SerializeField] AudioClip moveSound;
+
     int positionIndex;
     public float speed;
-    [Range(0f, 1f)]
+    [Range(0f, 2f)]
     public float angleSpeed;
 
     public float angle;
+
 
     private enum PlayerDirection
     {
@@ -28,6 +36,7 @@ public class PlayerMovement : SwipeDetection
         positionIndex = 1;
         transform.position = nextMovePos[positionIndex].position;
         playerMove = PlayerDirection.Stationary;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ResetPlayer()
@@ -58,7 +67,9 @@ public class PlayerMovement : SwipeDetection
             playerMove = PlayerDirection.MovingRight;
             positionIndex++;
             lastPosition = PlayerDirection.MovingRight;
-        }                
+        }
+
+        AudioClipManager.Instance.audioSource.PlayOneShot(moveSound);
     }
 
     void Update()
@@ -82,7 +93,7 @@ public class PlayerMovement : SwipeDetection
             if(lastPosition == PlayerDirection.MovingRight)
                 angle += angleSpeed;
 
-            if (angle <= 1 && angle > 0 || angle >= -1 && angle < 0 )
+            if (angle <= 2 && angle > 0 || angle >= -2 && angle < 0 )
                 angle = 0;
         }
 
@@ -95,17 +106,18 @@ public class PlayerMovement : SwipeDetection
         {
             if (GameManager.Instance.activeBonus == GameManager.ActiveBonus.CowCatcher)
             {
-                GameManager.Instance.score += 10;
+                GameManager.Instance.score += 3;
                 ObjectPooler.Instance.ReturnToPool(collision.gameObject);
                 CarGen.RemoveActiveLevelPiece();
+                AudioClipManager.Instance.audioSource.PlayOneShot(destroyCar);
             }
             else
             {
+                AudioClipManager.Instance.audioSource.PlayOneShot(deathSound);
                 GameManager.Instance.activeBonus = GameManager.ActiveBonus.Normal;
                 GameManager.Instance.gameOver = true;
                 gameState.JumpToGameOver();
-                gameObject.SetActive(false);
-
+                gameObject.SetActive(false);                
             }
            
         }

@@ -12,6 +12,8 @@ public class Newspaper : Projectile
     [SerializeField] float rotationSpeed;
     [SerializeField] float rotationAmount;
 
+    [SerializeField] AudioClip hitSound;
+
    
 
     // Start is called before the first frame update
@@ -74,6 +76,7 @@ public class Newspaper : Projectile
             {
                 GameManager.Instance.score ++;
             }
+            AudioClipManager.Instance.audioSource.PlayOneShot(hitSound);
             GameManager.Instance.score ++;
             Destroy(gameObject);
             Debug.Log("Hit House");

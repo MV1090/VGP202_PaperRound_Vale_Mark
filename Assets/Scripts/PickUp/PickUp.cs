@@ -7,6 +7,7 @@ public class PickUp : MonoBehaviour
     private SpriteRenderer sr;
 
     [SerializeField] int bonusLength;
+    [SerializeField] AudioClip pickUpSound;
     enum PickUpType
     {
         DoubleScore, CowCatcher
@@ -42,7 +43,8 @@ public class PickUp : MonoBehaviour
                 case PickUpType.CowCatcher:
                     CoroutineManager.Instance.StartCoroutine(setBonus(GameManager.ActiveBonus.CowCatcher, bonusLength, color));
                     break;
-            }            
+            }              
+            AudioClipManager.Instance.audioSource.clip = pickUpSound;
         }     
     }
 
@@ -64,7 +66,6 @@ public class PickUp : MonoBehaviour
         GameManager.Instance.activeBonus = GameManager.ActiveBonus.Normal;
         sr.enabled = true;
         ObjectPooler.Instance.ReturnToPool(gameObject);
-        ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();
-        
+        ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();        
     }
 }

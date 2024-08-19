@@ -174,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   minYPos: -5
+  rb: {fileID: 0}
   bc: {fileID: 0}
   ObjectGen: {fileID: 0}
 --- !u!114 &9086380962601241540
@@ -190,5 +191,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectGen: {fileID: 0}
   bonusLength: 15
+  pickUpSound: {fileID: 8300000, guid: 71541aa5eb76f2f4c899f7101825f416, type: 3}
   currentPickUp: 0
   color: {r: 0, g: 0, b: 1, a: 1}

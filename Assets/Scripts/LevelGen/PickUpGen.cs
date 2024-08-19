@@ -52,7 +52,7 @@ public class PickUpGen : ObjectGen
     {
         while (true)
         {
-            spawnTime = Random.Range(30, 45);
+            spawnTime = Random.Range(20, 20);
 
             yield return new WaitForSeconds(spawnTime);
 
