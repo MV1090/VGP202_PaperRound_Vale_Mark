@@ -43,8 +43,8 @@ public class PickUp : MonoBehaviour
                 case PickUpType.CowCatcher:
                     CoroutineManager.Instance.StartCoroutine(setBonus(GameManager.ActiveBonus.CowCatcher, bonusLength, color));
                     break;
-            }              
-            AudioClipManager.Instance.audioSource.clip = pickUpSound;
+            }
+            AudioClipManager.Instance.audioSource.PlayOneShot(pickUpSound);
         }     
     }
 
