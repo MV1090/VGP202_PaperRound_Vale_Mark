@@ -16,6 +16,7 @@ TagManager:
   - PickUpBlue
   - PickUpRed
   - PickUpGreen
+  - NewsPaper
   layers:
   - Default
   - TransparentFX

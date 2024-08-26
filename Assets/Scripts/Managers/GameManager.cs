@@ -13,6 +13,15 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] AudioClip gameMusic;
     [SerializeField] AudioClip cowCatcherMusic;
+   
+    [SerializeField] public float carSpeed;
+    float startSpeed = 2;
+    float endSpeed = 7;
+    float duration = 120;
+    float timeElapsed = 0;  
+
+
+
     public enum ActiveBonus 
     {
         Normal, DoubleScore, CowCatcher
@@ -42,10 +51,17 @@ public class GameManager : Singleton<GameManager>
 
         audioSource.clip = gameMusic;
         audioSource.Play();
+
+        ResetCarSpeed();
     }
 
     private void Update() 
     {
+        SetCarSpeed();
+
+        if (gameOver == true)
+            ResetCarSpeed();
+
         if (score > highScore)
         {
             highScore = score;
@@ -59,16 +75,33 @@ public class GameManager : Singleton<GameManager>
             audioSource.Play();
         }
 
-            if (activeBonus == ActiveBonus.CowCatcher)
+        if (activeBonus == ActiveBonus.CowCatcher)
         {
             if (audioSource.clip == cowCatcherMusic)
                 return;
             audioSource.clip = cowCatcherMusic;
             audioSource.Play();
-        }
-
-           
+        }               
 
     }
-       
+
+    private void SetCarSpeed()
+    {
+       if (timeElapsed > duration)
+            return;
+                      
+       timeElapsed += Time.deltaTime;
+       float t = timeElapsed / duration;
+
+       carSpeed = Mathf.Lerp(startSpeed, endSpeed, t);
+
+       Debug.Log(carSpeed.ToString());      
+    }
+
+
+    private void ResetCarSpeed()
+    {
+        carSpeed = startSpeed;
+        timeElapsed = 0;
+    }
 }

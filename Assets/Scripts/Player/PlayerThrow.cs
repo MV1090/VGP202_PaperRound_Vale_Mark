@@ -12,17 +12,27 @@ public class PlayerThrow : Singleton<PlayerThrow>
     float startTime;
     float endTime;
 
+    public int paperTracker;
+
     [SerializeField] Transform spawnLeft;
     [SerializeField] Transform spawnRight;  
     [SerializeField] GameObject NewspaperPrefab;
+    //[SerializeField] NewsPaperGen newsPaper;
     [SerializeField] AudioClip throwSound;
+
     public Vector2 touchPos;
+      
+
+    private void Start()
+    {
+       
+    }
 
 
     private void OnEnable()
     {
         InputManager.OnStartTouch += TapStart;
-        InputManager.OnEndTouch += TapEnd;
+        InputManager.OnEndTouch += TapEnd;                
     }
 
     private void OnDisable()
@@ -47,20 +57,29 @@ public class PlayerThrow : Singleton<PlayerThrow>
     void Throw()
     {
         if (Time.timeScale == 0)
-            return; 
+            return;
+
+        if (paperTracker > 5)
+            return;
 
         if (Vector2.Distance(startPos, endPos) <= minDist)
         {
             if (startPos.x > transform.position.x)
             {
                 Debug.Log("Player Tapped right");
+                //newsPaper.spawnPoint = spawnRight;
+                //newsPaper.SpawnLevelPiece();
                 Instantiate(NewspaperPrefab, spawnRight.position, Quaternion.identity);
+                paperTracker++;
             }                
 
             if (startPos.x < transform.position.x)
             {
                 Debug.Log("Player Tapped Left");
+                //newsPaper.spawnPoint = spawnLeft;
+                //newsPaper.SpawnLevelPiece();
                 Instantiate(NewspaperPrefab, spawnLeft.position, Quaternion.identity);
+                paperTracker++;
             }
             AudioClipManager.Instance.audioSource.PlayOneShot(throwSound);
         }
@@ -69,6 +88,6 @@ public class PlayerThrow : Singleton<PlayerThrow>
     // Update is called once per frame
     void Update()
     {
-
+  
     }
 }

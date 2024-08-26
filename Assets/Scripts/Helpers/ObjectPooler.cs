@@ -27,6 +27,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         PickUpBlue,
         PickUpRed,
         PickUpGreen,
+        NewsPaper,
         NotFound
     }
 
@@ -106,6 +107,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         if (tag.Equals("PickUpBlue")) return LevelPieces.PickUpBlue; 
         if (tag.Equals("PickUpRed")) return LevelPieces.PickUpRed; 
         if (tag.Equals("PickUpGreen")) return LevelPieces.PickUpGreen;
+        if (tag.Equals("NewsPaper")) return LevelPieces.NewsPaper;
 
         return LevelPieces.NotFound;
     }

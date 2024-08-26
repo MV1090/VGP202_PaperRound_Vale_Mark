@@ -5,6 +5,8 @@ using UnityEngine;
 public class AudioClipManager : Singleton<AudioClipManager>
 {
     public AudioSource audioSource;
+
+    public AudioClip clickSound;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -19,6 +21,11 @@ public class AudioClipManager : Singleton<AudioClipManager>
     public void StopSound()
     {
         audioSource.Stop();
+    }
+
+    public void ButtonClickedSound()
+    {
+        audioSource.PlayOneShot(clickSound);
     }
 
 }

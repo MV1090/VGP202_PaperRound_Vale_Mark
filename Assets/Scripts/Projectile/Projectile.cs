@@ -24,6 +24,11 @@ public class Projectile : MonoBehaviour
 
     }
 
+    public virtual void OnEnable()
+    {
+
+    }
+
     public virtual void setProjectileRotation()
     {
 
