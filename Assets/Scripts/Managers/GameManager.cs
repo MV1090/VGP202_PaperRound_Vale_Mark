@@ -20,8 +20,6 @@ public class GameManager : Singleton<GameManager>
     float duration = 120;
     float timeElapsed = 0;  
 
-
-
     public enum ActiveBonus 
     {
         Normal, DoubleScore, CowCatcher
@@ -41,7 +39,10 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public int highScore;
+    public int normalModeHighScore;
+    public float timerModeMinutes;
+    public float timerModeSeconds;
+    public int hardModeHighScore;
     
     private void Start()
     {
@@ -52,21 +53,19 @@ public class GameManager : Singleton<GameManager>
         audioSource.clip = gameMusic;
         audioSource.Play();
 
-        ResetCarSpeed();
+        timerModeMinutes = 59;
+        timerModeSeconds = 59;
+
+    ResetCarSpeed();
     }
 
     private void Update() 
     {
         SetCarSpeed();
-
         if (gameOver == true)
             ResetCarSpeed();
 
-        if (score > highScore)
-        {
-            highScore = score;
-        }
-
+        SetHighScores();
         if (activeBonus == ActiveBonus.Normal)
         {
             if (audioSource.clip == gameMusic)
@@ -74,7 +73,6 @@ public class GameManager : Singleton<GameManager>
             audioSource.clip = gameMusic;
             audioSource.Play();
         }
-
         if (activeBonus == ActiveBonus.CowCatcher)
         {
             if (audioSource.clip == cowCatcherMusic)
@@ -84,7 +82,6 @@ public class GameManager : Singleton<GameManager>
         }               
 
     }
-
     private void SetCarSpeed()
     {
        if (timeElapsed > duration)
@@ -93,15 +90,50 @@ public class GameManager : Singleton<GameManager>
        timeElapsed += Time.deltaTime;
        float t = timeElapsed / duration;
 
-       carSpeed = Mathf.Lerp(startSpeed, endSpeed, t);
-
-       Debug.Log(carSpeed.ToString());      
+       carSpeed = Mathf.Lerp(startSpeed, endSpeed, t);    
     }
-
-
     private void ResetCarSpeed()
     {
         carSpeed = startSpeed;
         timeElapsed = 0;
     }
+    private void SetHighScores()
+    {
+        if(GameModeManager.Instance.mode == GameModeManager.GameMode.NormalMode)
+        {
+            if (score > normalModeHighScore)
+            {
+                normalModeHighScore = score;
+            }
+        }
+        if(GameModeManager.Instance.wonTimedMode == true)
+        {
+            if (GameModeManager.Instance.mode == GameModeManager.GameMode.TimedMode)
+            {
+
+                if (timerModeMinutes <= GameModeManager.Instance.minutes)
+                {
+                    if (timerModeSeconds <= GameModeManager.Instance.seconds)
+                    {
+                        GameModeManager.Instance.wonTimedMode = false;
+                        return;
+                    }
+                }
+
+                timerModeMinutes = GameModeManager.Instance.minutes;
+                timerModeSeconds = GameModeManager.Instance.seconds;
+                GameModeManager.Instance.wonTimedMode = false;
+            }
+        }
+        if(GameModeManager.Instance.mode == GameModeManager.GameMode.HardMode)
+        {
+            if (score > hardModeHighScore)
+            {
+                hardModeHighScore = score;
+            }
+        }
+    }
+
+
+
 }

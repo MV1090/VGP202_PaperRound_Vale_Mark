@@ -15,7 +15,16 @@ public class GameState : BaseMenu
     {
         base.EnterState();
         Time.timeScale = 1.0f;
-        GameManager.Instance.score = 0;
+        
+
+        if (GameModeManager.Instance.mode == GameModeManager.GameMode.TimedMode)
+        {
+            Debug.Log("Timed mode set");
+            GameManager.Instance.score = 10;
+            GameModeManager.Instance.currentTime = 0;            
+        }
+        //else
+            //GameManager.Instance.score = 0;
     }
 
     public override void ExitState()

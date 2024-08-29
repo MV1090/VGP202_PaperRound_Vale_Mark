@@ -4,8 +4,7 @@ public class CarScroll : ObjectScroll
 {
 
     public override void Start()
-    {
-        speed = GameManager.Instance.carSpeed;
+    {        
         base.Start();
     }
 

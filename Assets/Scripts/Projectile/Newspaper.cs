@@ -110,13 +110,13 @@ public class Newspaper : Projectile
                 return;
             }               
 
+
+
             collision.gameObject.GetComponent<HouseScroll>().hasBeenHit = true;
-            if(GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
-            {
-                GameManager.Instance.score ++;
-            }
+
+            GameModeManager.Instance.GameModeScoreSet();
             AudioClipManager.Instance.audioSource.PlayOneShot(hitSound);
-            GameManager.Instance.score ++;
+            //GameManager.Instance.score ++;
             Destroy(gameObject);
             //ObjectPooler.Instance.ReturnToPool(gameObject);
             //ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();

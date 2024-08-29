@@ -1,26 +1,25 @@
-
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
 using UnityEngine.Audio;
-
 
 public class CanvasManager : Singleton<CanvasManager>
 {
     public AudioMixer audioMixer;   
 
     [Header("Text")]   
-    public TMP_Text scoreText;
-    public TMP_Text HighScoreText;
-    public TMP_Text volumeText;
-    public TMP_Text musicText;
-    public TMP_Text SFXText;
+    [SerializeField] TMP_Text scoreText;
+    [SerializeField] public TMP_Text timerText;
+    [SerializeField] TMP_Text highScoreText;
+    [SerializeField] TMP_Text fastestTimeText;
+    [SerializeField] TMP_Text volumeText;
+    [SerializeField] TMP_Text musicText;
+    [SerializeField] TMP_Text SFXText;
 
     [Header("Sliders")]
-    public Slider volumeSlider;
-    public Slider musicSlider;
-    public Slider SFXSlider;
+    [SerializeField] Slider volumeSlider;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider SFXSlider;
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +29,10 @@ public class CanvasManager : Singleton<CanvasManager>
             GameManager.Instance.OnScoreValueChanged.AddListener(UpdatePaperText);
             scoreText.text = "Papers: " + GameManager.Instance.score.ToString();
         }
-        if (HighScoreText)
+        if (highScoreText)
         {
-            GameManager.Instance.OnScoreValueChanged.AddListener(UpdateHighScore);
-            //HighScoreText.text = "High Score " + GameManager.Instance.highScore.ToString();
+            GameManager.Instance.OnScoreValueChanged.AddListener(UpdateHighScore);            
         }
-
         if (volumeSlider)
         {
             volumeSlider.onValueChanged.AddListener((sliderValue) => OnSliderValueChanged(sliderValue, volumeText, "Master"));
@@ -45,7 +42,6 @@ public class CanvasManager : Singleton<CanvasManager>
             if (volumeText)
                 volumeText.text = volumeSlider.value.ToString();
         }
-
         if (musicSlider)
         {
             musicSlider.onValueChanged.AddListener((sliderValue) => OnSliderValueChanged(sliderValue, musicText, "Music"));
@@ -55,7 +51,6 @@ public class CanvasManager : Singleton<CanvasManager>
             if (musicText)
                 musicText.text = musicSlider.value.ToString();
         }
-
         if (SFXSlider)
         {
             SFXSlider.onValueChanged.AddListener((sliderValue) => OnSliderValueChanged(sliderValue, SFXText, "SFX"));
@@ -66,6 +61,10 @@ public class CanvasManager : Singleton<CanvasManager>
                 SFXText.text = SFXSlider.value.ToString();
 
         }
+        if (timerText)
+        {
+            timerText.text = string.Format("{00:00} : {1:00}", GameModeManager.Instance.minutes, GameModeManager.Instance.seconds);
+        }
     }
 
     void UpdatePaperText(int value)
@@ -75,23 +74,40 @@ public class CanvasManager : Singleton<CanvasManager>
 
     void UpdateHighScore(int value)
     {
-        if (GameManager.Instance.score < GameManager.Instance.highScore)
-         return;
-           
-        HighScoreText.text = "High Score " + value.ToString();        
+        if (GameModeManager.Instance.mode == GameModeManager.GameMode.NormalMode)
+        {
+            if (GameManager.Instance.score < GameManager.Instance.normalModeHighScore)
+                return;
+
+            highScoreText.text = "High Score " + value.ToString();
+        }
+    }
+
+    void UpDateFastestTime()
+    {
+        if (GameModeManager.Instance.mode == GameModeManager.GameMode.TimedMode)
+        {
+            fastestTimeText.text = string.Format("{00:00} : {1:00}", GameManager.Instance.timerModeMinutes, GameManager.Instance.timerModeSeconds);
+        }
+    }
+    void UpDateTimerText()
+    {
+        if (timerText)
+        {
+            timerText.text = string.Format("{00:00} : {1:00}", GameModeManager.Instance.minutes, GameModeManager.Instance.seconds);
+        }
     }
 
     void OnSliderValueChanged(float value, TMP_Text sliderText, string sliderName)
     {
         sliderText.text = value.ToString();
         audioMixer.SetFloat(sliderName, value - 80);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-
+        UpDateTimerText();
+        UpDateFastestTime();
     }       
 }

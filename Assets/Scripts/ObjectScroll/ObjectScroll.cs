@@ -38,7 +38,7 @@ public class ObjectScroll : MonoBehaviour
 
         rb.gravityScale = 0;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        rb.velocity = Vector2.down * speed * Time.deltaTime;
+        rb.velocity = Vector2.down * speed;
     }
 
     private Vector2 GetBotLeftCorner()

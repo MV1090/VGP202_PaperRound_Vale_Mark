@@ -26,6 +26,7 @@ public class GameOver : BaseMenu
     public void JumpToMainMenu()
     {
         context.SetActiveState(MenuController.MenuStates.MainMenu);
+        Debug.Log("jump to main menu");
     }
 
     public void JumpToGameState()
