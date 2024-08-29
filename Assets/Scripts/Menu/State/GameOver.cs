@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
+
 
 public class GameOver : BaseMenu
 {
@@ -15,6 +13,8 @@ public class GameOver : BaseMenu
     {
         base.EnterState();
         Time.timeScale = 0.0f;
+        GameManager.Instance.ResetCarSpeed();
+        CoroutineManager.Instance.StopAllCoroutines();
     }
 
     public override void ExitState()

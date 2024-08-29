@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -69,7 +68,7 @@ public class GameManager : Singleton<GameManager>
         minutesScore = 59;
         secondsScore = 59;
 
-    ResetCarSpeed();
+        ResetCarSpeed();
     }
 
     private void Update() 
@@ -88,15 +87,15 @@ public class GameManager : Singleton<GameManager>
                 return;
             audioSource.clip = cowCatcherMusic;
             audioSource.Play();
-        }
-
-        if (gameOver == true)
-            ResetCarSpeed();
+        }        
     }
 
     private void FixedUpdate()
     {
-        SetCarSpeed();      
+        if (gameOver == true)
+            return;
+
+            SetCarSpeed();      
     } 
 
     private void SetCarSpeed()
@@ -109,10 +108,12 @@ public class GameManager : Singleton<GameManager>
 
        carSpeed = Mathf.Lerp(startSpeed, endSpeed, t);    
     }
-    private void ResetCarSpeed()
+    public void ResetCarSpeed()
     {
         carSpeed = startSpeed;
         timeElapsed = 0;
+
+        Debug.Log(carSpeed.ToString() + " " + timeElapsed.ToString());
     }
     private void SetHighScores()
     {

@@ -2334,8 +2334,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3377,13 +3377,15 @@ MonoBehaviour:
   OnScoreValueChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnTimeScoreChanged:
+    m_PersistentCalls:
+      m_Calls: []
   gameMusic: {fileID: 8300000, guid: 0be68437d670b594ab19c6491f8348d7, type: 3}
   cowCatcherMusic: {fileID: 8300000, guid: a4b989603c9fc0f47be9ab39a20b0dca, type: 3}
   carSpeed: 0
   activeBonus: 0
+  minutesScore: 0
   normalModeHighScore: 0
-  timerModeMinutes: 0
-  timerModeSeconds: 0
   hardModeHighScore: 0
 --- !u!114 &588868081
 MonoBehaviour:
@@ -3505,7 +3507,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b83d88b77c7f94419466b89528a04d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seconds: 0
+  OnTimerValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
   minutes: 0
   currentTime: 0
   wonTimedMode: 0
@@ -4613,8 +4617,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4747,8 +4751,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6327,7 +6331,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fastest time 00:00
+  m_text: 'Fastest time: 00:00'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8199,8 +8203,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8954,8 +8958,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9765,8 +9769,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

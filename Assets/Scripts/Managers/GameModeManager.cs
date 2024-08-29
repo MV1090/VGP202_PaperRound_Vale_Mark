@@ -7,8 +7,8 @@ public class GameModeManager : Singleton<GameModeManager>
 
     public UnityEvent<float> OnTimerValueChanged;
 
-    private float _seconds = 0;
-    public float seconds
+    private int _seconds = 0;
+    public int seconds
     {
 
         get => _seconds; 
@@ -19,7 +19,7 @@ public class GameModeManager : Singleton<GameModeManager>
             OnTimerValueChanged?.Invoke(_seconds);
         }
     }
-    public float minutes;
+    public int minutes;
     public float currentTime;
 
     public bool wonTimedMode;
@@ -42,7 +42,7 @@ public class GameModeManager : Singleton<GameModeManager>
             currentTime += Time.deltaTime;
             updateTimer(currentTime);
 
-            if (GameManager.Instance.score == 0)
+            if (GameManager.Instance.score <= 0)
             {
                 if (GameManager.Instance.gameOver == true)
                     return;
@@ -57,9 +57,8 @@ public class GameModeManager : Singleton<GameModeManager>
 
     private void updateTimer(float time)
     {                
-        minutes = Mathf.FloorToInt(time / 60);
-        seconds = Mathf.FloorToInt(time % 60);
-        Debug.Log(seconds.ToString());
+        minutes = (int)Mathf.FloorToInt(time / 60);
+        seconds = (int)Mathf.FloorToInt(time % 60);
     }
 
     public void SetNormalMode()
@@ -72,7 +71,7 @@ public class GameModeManager : Singleton<GameModeManager>
     public void SetTimedMode()
     {
         mode = GameMode.TimedMode;
-        GameManager.Instance.score = 10;
+        GameManager.Instance.score = 25;
         CanvasManager.Instance.timerText.gameObject.SetActive(true);
     }
 
@@ -108,6 +107,7 @@ public class GameModeManager : Singleton<GameModeManager>
 
         GameManager.Instance.score--;
     }
+
 
 
 

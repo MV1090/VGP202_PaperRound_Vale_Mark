@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using Unity.Mathematics;
 
 public class CanvasManager : Singleton<CanvasManager>
 {
@@ -83,22 +84,22 @@ public class CanvasManager : Singleton<CanvasManager>
             if (GameManager.Instance.score < GameManager.Instance.normalModeHighScore)
                 return;
 
-            highScoreText.text = "High Score " + value.ToString();
+            highScoreText.text = "High Score: " + value.ToString();
         }
     }
 
     void UpDateFastestTime(float value)
     {
         if (GameModeManager.Instance.mode == GameModeManager.GameMode.TimedMode)
-        {         
-             fastestTimeText.text = "Fastest time " + string.Format("{00:00} : {1:00}", GameManager.Instance.minutesScore, value.ToString());           
+        {
+            fastestTimeText.text = "Fastest time: "  + string.Format("{00:00} : {1:00}", GameManager.Instance.minutesScore, value.ToString());
         }
     }
     void UpDateTimerText(float value)
     {
         if (timerText)
         {
-            timerText.text = string.Format("{00:00} : {1:00}", GameModeManager.Instance.minutes, value.ToString());
+            timerText.text = string.Format("{00:00} : {1:00}", GameModeManager.Instance.minutes, value.ToString("00"));
         }
     }
 

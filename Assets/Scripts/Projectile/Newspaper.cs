@@ -128,12 +128,7 @@ public class Newspaper : Projectile
     //    if (obj.tag.Contains("News"))
     //        obj = GameObject.Find("NewsPaperGen");
 
-    //    return obj;
+    //    return obj;   
+    
     //}
-
-    private void OnDestroy()
-    {
-        PlayerThrow.Instance.paperTracker --;
-    }
-
 }
