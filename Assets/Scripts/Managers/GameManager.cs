@@ -15,8 +15,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] AudioClip cowCatcherMusic;
    
     [SerializeField] public float carSpeed;
-    float startSpeed = 2;
-    float endSpeed = 7;
+    float startSpeed = 3;
+    float endSpeed = 8;
     float duration = 120;
     float timeElapsed = 0;  
 

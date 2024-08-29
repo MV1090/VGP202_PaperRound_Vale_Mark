@@ -9,10 +9,15 @@ public class CarScroll : ObjectScroll
     }
 
     public override void Update()
-    {
-        speed = GameManager.Instance.carSpeed;
+    {        
         base.Update();
     }
+
+    private void FixedUpdate()
+    {
+        speed = GameManager.Instance.carSpeed;
+    }
+
 
     public override void OnEnable()
     {
