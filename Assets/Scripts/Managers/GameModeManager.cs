@@ -1,11 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime;
+
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameModeManager : Singleton<GameModeManager>
 {
-    public float seconds;
+
+    public UnityEvent<float> OnTimerValueChanged;
+
+    private float _seconds = 0;
+    public float seconds
+    {
+
+        get => _seconds; 
+
+        set
+        { 
+            _seconds = value;
+            OnTimerValueChanged?.Invoke(_seconds);
+        }
+    }
     public float minutes;
     public float currentTime;
 
@@ -45,7 +58,8 @@ public class GameModeManager : Singleton<GameModeManager>
     private void updateTimer(float time)
     {                
         minutes = Mathf.FloorToInt(time / 60);
-        seconds = Mathf.FloorToInt(time % 60);        
+        seconds = Mathf.FloorToInt(time % 60);
+        Debug.Log(seconds.ToString());
     }
 
     public void SetNormalMode()

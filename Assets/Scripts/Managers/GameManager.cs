@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,24 +9,25 @@ public class GameManager : Singleton<GameManager>
 
     public bool gameOver;
     public UnityEvent<int> OnScoreValueChanged;
+    public UnityEvent<float> OnTimeScoreChanged;
 
     AudioSource audioSource;
 
     [SerializeField] AudioClip gameMusic;
     [SerializeField] AudioClip cowCatcherMusic;
-   
+
     [SerializeField] public float carSpeed;
     float startSpeed = 3;
     float endSpeed = 8;
     float duration = 120;
-    float timeElapsed = 0;  
+    float timeElapsed = 0;
 
-    public enum ActiveBonus 
+    public enum ActiveBonus
     {
         Normal, DoubleScore, CowCatcher
     }
 
-    public ActiveBonus activeBonus; 
+    public ActiveBonus activeBonus;
 
     private int _score = 0;
     public int score
@@ -33,17 +35,28 @@ public class GameManager : Singleton<GameManager>
         get => _score;
         set
         {
-            _score = value; 
+            _score = value;
 
             OnScoreValueChanged?.Invoke(_score);
         }
     }
 
-    public int normalModeHighScore;
-    public float timerModeMinutes;
-    public float timerModeSeconds;
-    public int hardModeHighScore;
-    
+    private float _secondsScore = 0;
+    public float secondsScore
+    {
+        get => _secondsScore;
+
+        set
+        {
+            _secondsScore = value;
+            OnTimeScoreChanged?.Invoke(_secondsScore);
+        }
+    }
+    public float minutesScore;
+
+    public float normalModeHighScore;
+    public float hardModeHighScore;    
+      
     private void Start()
     {
         gameOver = false;
@@ -53,8 +66,8 @@ public class GameManager : Singleton<GameManager>
         audioSource.clip = gameMusic;
         audioSource.Play();
 
-        timerModeMinutes = 59;
-        timerModeSeconds = 59;
+        minutesScore = 59;
+        secondsScore = 59;
 
     ResetCarSpeed();
     }
@@ -114,17 +127,17 @@ public class GameManager : Singleton<GameManager>
             if (GameModeManager.Instance.mode == GameModeManager.GameMode.TimedMode)
             {
 
-                if (timerModeMinutes <= GameModeManager.Instance.minutes)
+                if (minutesScore <= GameModeManager.Instance.minutes)
                 {
-                    if (timerModeSeconds <= GameModeManager.Instance.seconds)
+                    if (secondsScore <= GameModeManager.Instance.seconds)
                     {
                         GameModeManager.Instance.wonTimedMode = false;
                         return;
                     }
                 }
 
-                timerModeMinutes = GameModeManager.Instance.minutes;
-                timerModeSeconds = GameModeManager.Instance.seconds;
+                minutesScore = GameModeManager.Instance.minutes;
+                secondsScore = GameModeManager.Instance.seconds;
                 GameModeManager.Instance.wonTimedMode = false;
             }
         }

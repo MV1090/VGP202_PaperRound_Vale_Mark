@@ -63,7 +63,11 @@ public class CanvasManager : Singleton<CanvasManager>
         }
         if (timerText)
         {
-            timerText.text = string.Format("{00:00} : {1:00}", GameModeManager.Instance.minutes, GameModeManager.Instance.seconds);
+            GameModeManager.Instance.OnTimerValueChanged.AddListener(UpDateTimerText);            
+        }
+        if(fastestTimeText)
+        {
+            GameManager.Instance.OnTimeScoreChanged.AddListener(UpDateFastestTime);
         }
     }
 
@@ -83,18 +87,18 @@ public class CanvasManager : Singleton<CanvasManager>
         }
     }
 
-    void UpDateFastestTime()
+    void UpDateFastestTime(float value)
     {
         if (GameModeManager.Instance.mode == GameModeManager.GameMode.TimedMode)
         {         
-             fastestTimeText.text = "Fastest time " + string.Format("{00:00} : {1:00}", GameManager.Instance.timerModeMinutes, GameManager.Instance.timerModeSeconds);           
+             fastestTimeText.text = "Fastest time " + string.Format("{00:00} : {1:00}", GameManager.Instance.minutesScore, value.ToString());           
         }
     }
-    void UpDateTimerText()
+    void UpDateTimerText(float value)
     {
         if (timerText)
         {
-            timerText.text = string.Format("{00:00} : {1:00}", GameModeManager.Instance.minutes, GameModeManager.Instance.seconds);
+            timerText.text = string.Format("{00:00} : {1:00}", GameModeManager.Instance.minutes, value.ToString());
         }
     }
 
@@ -102,12 +106,6 @@ public class CanvasManager : Singleton<CanvasManager>
     {
         sliderText.text = value.ToString();
         audioMixer.SetFloat(sliderName, value - 80);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        UpDateTimerText();
-        UpDateFastestTime();
-    }       
+    }   
+         
 }
