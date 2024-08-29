@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
+
 
 public class MainMenu : BaseMenu
 {
@@ -31,5 +29,17 @@ public class MainMenu : BaseMenu
     public void JumpToGameState()
     {
         context.SetActiveState(MenuController.MenuStates.GameState);
+    }
+    public void JumpToNormalMode()
+    {
+        context.SetActiveState(MenuController.MenuStates.NormalMode);
+    }
+    public void JumpToTimedMode()
+    {
+        context.SetActiveState(MenuController.MenuStates.TimedMode);
+    }
+    public void JumpToHardMode()
+    {
+        context.SetActiveState(MenuController.MenuStates.HardMode);
     }
 }

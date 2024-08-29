@@ -60,11 +60,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     private void Update() 
-    {
-        SetCarSpeed();
-        if (gameOver == true)
-            ResetCarSpeed();
-
+    {     
         SetHighScores();
         if (activeBonus == ActiveBonus.Normal)
         {
@@ -79,9 +75,16 @@ public class GameManager : Singleton<GameManager>
                 return;
             audioSource.clip = cowCatcherMusic;
             audioSource.Play();
-        }               
-
+        }           
     }
+
+    private void FixedUpdate()
+    {
+        SetCarSpeed();
+        if (gameOver == true)
+            ResetCarSpeed();
+    }
+
     private void SetCarSpeed()
     {
        if (timeElapsed > duration)

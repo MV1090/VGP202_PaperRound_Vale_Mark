@@ -86,8 +86,8 @@ public class CanvasManager : Singleton<CanvasManager>
     void UpDateFastestTime()
     {
         if (GameModeManager.Instance.mode == GameModeManager.GameMode.TimedMode)
-        {
-            fastestTimeText.text = string.Format("{00:00} : {1:00}", GameManager.Instance.timerModeMinutes, GameManager.Instance.timerModeSeconds);
+        {         
+             fastestTimeText.text = "Fastest time " + string.Format("{00:00} : {1:00}", GameManager.Instance.timerModeMinutes, GameManager.Instance.timerModeSeconds);           
         }
     }
     void UpDateTimerText()

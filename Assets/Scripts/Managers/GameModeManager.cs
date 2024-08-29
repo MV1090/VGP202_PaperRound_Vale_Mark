@@ -23,8 +23,7 @@ public class GameModeManager : Singleton<GameModeManager>
   
 
     private void Update()
-    {
-                
+    {                
         if (mode == GameMode.TimedMode)
         {
             currentTime += Time.deltaTime;
