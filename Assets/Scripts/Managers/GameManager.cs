@@ -88,15 +88,16 @@ public class GameManager : Singleton<GameManager>
                 return;
             audioSource.clip = cowCatcherMusic;
             audioSource.Play();
-        }           
+        }
+
+        if (gameOver == true)
+            ResetCarSpeed();
     }
 
     private void FixedUpdate()
     {
-        SetCarSpeed();
-        if (gameOver == true)
-            ResetCarSpeed();
-    }
+        SetCarSpeed();      
+    } 
 
     private void SetCarSpeed()
     {
