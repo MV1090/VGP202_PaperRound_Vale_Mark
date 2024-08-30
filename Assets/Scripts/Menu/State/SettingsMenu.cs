@@ -6,6 +6,8 @@ public class SettingsMenu : BaseMenu
 {
     [SerializeField] GameObject player;    
     [SerializeField] Image playerImage;
+
+    [SerializeField] Sprite[] playerSprites;
        
     public override void InitState(MenuController ctx)
     {
@@ -32,20 +34,20 @@ public class SettingsMenu : BaseMenu
 
     public void YellowCharacter()
     {
-       player.GetComponent<SpriteRenderer>().color = new Color(238 / 255f, 213 / 255f, 24 / 255f, 255 / 255f);
-       playerImage.color = new Color(238 / 255f, 213 / 255f, 24 / 255f, 255 / 255f);
+       player.GetComponent<SpriteRenderer>().sprite = playerSprites[0];
+       playerImage.sprite = playerSprites[0];
     }
 
     public void PurpleCharacter() 
     {
-        player.GetComponent<SpriteRenderer>().color = new Color(153/255f,28/255f,233/255f,255/255f);
-        playerImage.color = new Color(153 / 255f, 28 / 255f, 233 / 255f, 255 / 255f);
+        player.GetComponent<SpriteRenderer>().sprite = playerSprites[1];
+        playerImage.sprite = playerSprites[1];
     }
 
     public void WhiteCharacter() 
     {
-        player.GetComponent<SpriteRenderer>().color = new Color(1, 1,1, 1);
-        playerImage.color = new Color(1, 1, 1, 1);
+        player.GetComponent<SpriteRenderer>().sprite = playerSprites[2];
+        playerImage.sprite = playerSprites[2];
     }
 
 
