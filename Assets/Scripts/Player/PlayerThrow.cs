@@ -11,9 +11,7 @@ public class PlayerThrow : Singleton<PlayerThrow>
     Vector2 endPos;
     float startTime;
     float endTime;
-
-    public int paperTracker;
-
+       
     [SerializeField] Transform spawnLeft;
     [SerializeField] Transform spawnRight;  
     [SerializeField] GameObject NewspaperPrefab;
@@ -58,10 +56,7 @@ public class PlayerThrow : Singleton<PlayerThrow>
     {
         if (Time.timeScale == 0)
             return;
-
-        if (paperTracker > 5)
-            return;
-
+              
         if (Vector2.Distance(startPos, endPos) <= minDist)
         {
             if (startPos.x > transform.position.x)
@@ -69,8 +64,7 @@ public class PlayerThrow : Singleton<PlayerThrow>
                 Debug.Log("Player Tapped right");
                 //newsPaper.spawnPoint = spawnRight;
                 //newsPaper.SpawnLevelPiece();
-                Instantiate(NewspaperPrefab, spawnRight.position, Quaternion.identity);
-                paperTracker++;
+                Instantiate(NewspaperPrefab, spawnRight.position, Quaternion.identity);                
             }                
 
             if (startPos.x < transform.position.x)
@@ -78,8 +72,7 @@ public class PlayerThrow : Singleton<PlayerThrow>
                 Debug.Log("Player Tapped Left");
                 //newsPaper.spawnPoint = spawnLeft;
                 //newsPaper.SpawnLevelPiece();
-                Instantiate(NewspaperPrefab, spawnLeft.position, Quaternion.identity);
-                paperTracker++;
+                Instantiate(NewspaperPrefab, spawnLeft.position, Quaternion.identity);                
             }
             AudioClipManager.Instance.audioSource.PlayOneShot(throwSound);
         }

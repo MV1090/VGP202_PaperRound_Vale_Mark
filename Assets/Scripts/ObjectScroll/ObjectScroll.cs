@@ -8,6 +8,7 @@ public class ObjectScroll : MonoBehaviour
 
     public Rigidbody2D rb;
     public BoxCollider2D bc;
+    public SpriteRenderer sr;
 
     public GameObject ObjectGen;
 
@@ -16,6 +17,7 @@ public class ObjectScroll : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
+        sr = GetComponent<SpriteRenderer>();
         
         if (ObjectGen == null)
             ObjectGen = FindTag(gameObject);

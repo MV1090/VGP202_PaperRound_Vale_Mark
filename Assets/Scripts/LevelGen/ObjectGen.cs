@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 //[RequireComponent(typeof(ObjectPooler))]
@@ -11,7 +12,11 @@ public class ObjectGen : MonoBehaviour
     public List<GameObject> currentLevelPieces = new List<GameObject>();    
 
     public int randNum;
+    
     public GameObject newPiece;
+    
+    
+
     // Start is called before the first frame update
     virtual public void Start()
     {
@@ -19,7 +24,7 @@ public class ObjectGen : MonoBehaviour
         {
             ObjectPooler.Instance.AddToPool(curPieces);
         }
-
+        
         randNum = Random.Range(0, pieces.Count);        
     }
     public virtual void Update()
@@ -33,8 +38,8 @@ public class ObjectGen : MonoBehaviour
     virtual public void SpawnLevelPiece()
     {
         randNum = Random.Range(0, pieces.Count);
-
-        newPiece = ObjectPooler.Instance.SpawnFromPool(pieces[randNum].prefab);
+        
+        newPiece = ObjectPooler.Instance.SpawnFromPool(pieces[randNum].prefab);        
     }
 
     virtual public void RemoveActiveLevelPiece()
@@ -60,11 +65,11 @@ public class ObjectGen : MonoBehaviour
     public float GetExtents(string tag)
     {
         if (tag.Contains("One"))
-            return 0.5f;
+            return 0.7f;
         else if (tag.Contains("Two"))
             return 1f;
         else if (tag.Contains("Three"))
-            return 1.5f;
+            return 1.7f;
         else if (tag.Contains("PickUp"))
             return 0.5f;
         else

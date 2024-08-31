@@ -74,7 +74,10 @@ public class PlayerMovement : SwipeDetection
 
     void Update()
     {
-        if(transform.position == nextMovePos[positionIndex].position)
+        if (Time.timeScale == 0)
+            return;
+
+        if (transform.position == nextMovePos[positionIndex].position)
             playerMove = PlayerDirection.Stationary;
 
         if (playerMove == PlayerDirection.MovingLeft)

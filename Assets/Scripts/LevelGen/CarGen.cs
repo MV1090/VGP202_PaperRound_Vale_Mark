@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class CarGen : ObjectGen
 {
-    [SerializeField] Transform[] spawnPoint;
     
+    [SerializeField] Transform[] spawnPoint;
 
+    
     // Start is called before the first frame update
     public override void Start()
     {
-        base.Start();              
+        base.Start();    
+        
     }
 
     void InitialLevelPieceSpawn()
