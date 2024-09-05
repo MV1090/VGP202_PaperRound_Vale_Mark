@@ -122,5 +122,7 @@ MonoBehaviour:
   minYPos: -10
   rb: {fileID: 0}
   bc: {fileID: 0}
+  sr: {fileID: 0}
   ObjectGen: {fileID: 0}
   hasBeenHit: 0
+  objectSprite: []

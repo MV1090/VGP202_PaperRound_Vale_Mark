@@ -72,8 +72,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     private void Update() 
-    {     
-        SetHighScores();
+    {             
         if (activeBonus == ActiveBonus.Normal)
         {
             if (audioSource.clip == gameMusic)
@@ -87,7 +86,10 @@ public class GameManager : Singleton<GameManager>
                 return;
             audioSource.clip = cowCatcherMusic;
             audioSource.Play();
-        }        
+        }
+
+        if (gameOver == true)
+            SetHighScores();
     }
 
     private void FixedUpdate()
@@ -152,6 +154,9 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-
+    public void Quit()
+    {
+        Application.Quit();
+    }
 
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerThrow : Singleton<PlayerThrow>
@@ -14,7 +12,8 @@ public class PlayerThrow : Singleton<PlayerThrow>
        
     [SerializeField] Transform spawnLeft;
     [SerializeField] Transform spawnRight;  
-    [SerializeField] GameObject NewspaperPrefab;
+    [SerializeField] GameObject newspaperPrefab;
+    [SerializeField] GameObject BonusNewspaperPrefab;
     //[SerializeField] NewsPaperGen newsPaper;
     [SerializeField] AudioClip throwSound;
 
@@ -64,7 +63,11 @@ public class PlayerThrow : Singleton<PlayerThrow>
                 Debug.Log("Player Tapped right");
                 //newsPaper.spawnPoint = spawnRight;
                 //newsPaper.SpawnLevelPiece();
-                Instantiate(NewspaperPrefab, spawnRight.position, Quaternion.identity);                
+                if(GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
+                    Instantiate(BonusNewspaperPrefab, spawnRight.position, Quaternion.identity);
+
+                else
+                    Instantiate(newspaperPrefab, spawnRight.position, Quaternion.identity);                
             }                
 
             if (startPos.x < transform.position.x)
@@ -72,7 +75,11 @@ public class PlayerThrow : Singleton<PlayerThrow>
                 Debug.Log("Player Tapped Left");
                 //newsPaper.spawnPoint = spawnLeft;
                 //newsPaper.SpawnLevelPiece();
-                Instantiate(NewspaperPrefab, spawnLeft.position, Quaternion.identity);                
+                if (GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
+                    Instantiate(BonusNewspaperPrefab, spawnLeft.position, Quaternion.identity);
+
+                else
+                    Instantiate(newspaperPrefab, spawnLeft.position, Quaternion.identity);                
             }
             AudioClipManager.Instance.audioSource.PlayOneShot(throwSound);
         }

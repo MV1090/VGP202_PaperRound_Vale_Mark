@@ -8,13 +8,15 @@ public class PickUp : MonoBehaviour
 
     [SerializeField] int bonusLength;
     [SerializeField] AudioClip pickUpSound;
+    [SerializeField] float startRotPos;
+    [SerializeField] float rotationAmount;
+
     enum PickUpType
     {
         DoubleScore, CowCatcher
     }
 
-    [SerializeField] PickUpType currentPickUp;
-    [SerializeField] Color color;
+    [SerializeField] PickUpType currentPickUp;    
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,7 @@ public class PickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.rotation = Quaternion.Euler(0, startRotPos -= rotationAmount, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,10 +40,10 @@ public class PickUp : MonoBehaviour
             switch (currentPickUp)
             {
                 case PickUpType.DoubleScore:
-                    CoroutineManager.Instance.StartCoroutine(setBonus(GameManager.ActiveBonus.DoubleScore, bonusLength, color));
+                    CoroutineManager.Instance.StartCoroutine(setBonus(GameManager.ActiveBonus.DoubleScore, bonusLength));
                     break;
                 case PickUpType.CowCatcher:
-                    CoroutineManager.Instance.StartCoroutine(setBonus(GameManager.ActiveBonus.CowCatcher, bonusLength, color));
+                    CoroutineManager.Instance.StartCoroutine(setBonus(GameManager.ActiveBonus.CowCatcher, bonusLength));
                     break;
             }
             AudioClipManager.Instance.audioSource.PlayOneShot(pickUpSound);
@@ -56,13 +58,13 @@ public class PickUp : MonoBehaviour
         return obj;
     }
 
-    IEnumerator setBonus(GameManager.ActiveBonus bonus, float secondsActive, Color color)
+    IEnumerator setBonus(GameManager.ActiveBonus bonus, float secondsActive)
     {
         sr.enabled = false;
         GameManager.Instance.activeBonus = bonus;
-        GameObject.Find("Player").GetComponent<SpriteRenderer>().color = color;
+        
         yield return new WaitForSeconds(secondsActive);
-        GameObject.Find("Player").GetComponent<SpriteRenderer>().color = Color.white;
+        
         GameManager.Instance.activeBonus = GameManager.ActiveBonus.Normal;
         sr.enabled = true;
         ObjectPooler.Instance.ReturnToPool(gameObject);

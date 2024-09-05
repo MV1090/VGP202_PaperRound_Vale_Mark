@@ -6,7 +6,6 @@ public class BackgroundScroll : MonoBehaviour
 {
 
     public float speed;
-    Vector2 offset;
     MeshRenderer mr;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +16,8 @@ public class BackgroundScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mr.material.mainTextureOffset = new Vector2(Time.realtimeSinceStartup *speed, mr.material.mainTextureOffset.y);
+        mr.material.mainTextureOffset = new Vector2(Time.time * speed, mr.material.mainTextureOffset.y);
     }
+
+
 }

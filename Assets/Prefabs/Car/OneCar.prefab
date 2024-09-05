@@ -178,6 +178,6 @@ MonoBehaviour:
   sr: {fileID: 0}
   ObjectGen: {fileID: 0}
   objectSprite:
-  - {fileID: -136679337, guid: 9793dba376ec23b43b2b830438053c29, type: 3}
-  - {fileID: 420889009, guid: 3088d44607245cd4384a8569e9348b2d, type: 3}
-  - {fileID: 384869595, guid: e9046afe0630ce149af5f4a98f866ba8, type: 3}
+  - {fileID: 21300000, guid: 94893f2f5c6bc3c4982f717465bbd391, type: 3}
+  - {fileID: 21300000, guid: 31549cc935d49b8408db7b8035250508, type: 3}
+  - {fileID: 21300000, guid: 9eef311340f2fa041b7c59758ba29f0a, type: 3}

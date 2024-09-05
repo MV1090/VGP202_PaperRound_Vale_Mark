@@ -36,9 +36,10 @@ public class GameModeManager : Singleton<GameModeManager>
   
 
     private void Update()
-    {                
-        if (mode == GameMode.TimedMode)
-        {
+    {
+        if (mode != GameMode.TimedMode)
+            return;
+       
             currentTime += Time.deltaTime;
             updateTimer(currentTime);
 
@@ -52,7 +53,7 @@ public class GameModeManager : Singleton<GameModeManager>
                 gameState.JumpToGameOver();
                 player.gameObject.SetActive(false);
             }              
-        }
+      
     }
 
     private void updateTimer(float time)
