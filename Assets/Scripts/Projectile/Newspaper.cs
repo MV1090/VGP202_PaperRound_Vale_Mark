@@ -116,7 +116,7 @@ public class Newspaper : Projectile
 
             GameModeManager.Instance.GameModeScoreSet();
             AudioClipManager.Instance.audioSource.PlayOneShot(hitSound);            
-            ParticleManager.Instance.PlayHitParticle(transform);
+            
             Destroy(gameObject);
             //ObjectPooler.Instance.ReturnToPool(gameObject);
             //ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();

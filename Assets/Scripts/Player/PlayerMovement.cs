@@ -110,6 +110,7 @@ public class PlayerMovement : SwipeDetection
             if (GameManager.Instance.activeBonus == GameManager.ActiveBonus.CowCatcher)
             {
                 //GameManager.Instance.score += 3;
+                ParticleManager.Instance.PlaySmoke(collision.gameObject.transform);
                 ObjectPooler.Instance.ReturnToPool(collision.gameObject);
                 CarGen.RemoveActiveLevelPiece();
                 AudioClipManager.Instance.audioSource.PlayOneShot(destroyCar);

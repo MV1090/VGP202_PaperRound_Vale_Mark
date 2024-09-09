@@ -41,6 +41,7 @@ public class HouseScroll : ObjectScroll
     public void SetColor()
     {
         sr.sprite = colorSprite[colorIndex];
+        ParticleManager.Instance.PlayHitParticle(transform);
     }
     
 }

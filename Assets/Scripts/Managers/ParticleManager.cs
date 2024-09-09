@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class ParticleManager : Singleton<ParticleManager>
 {
+    [Header("House Hit")]
     [SerializeField] ParticleSystem hitParticle;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    [Header("Smoke")]
+    [SerializeField] ParticleSystem smoke_1;
+    [SerializeField] ParticleSystem smoke_2;
+    
+    public void PlaySmoke(Transform spawnLocation)
     {
-        
+        smoke_1.transform.position = spawnLocation.position;
+        smoke_2.transform.position = spawnLocation.position;
+        smoke_1.Play();
+        smoke_2.Play(); 
     }
 
     public void PlayHitParticle(Transform spawnLocation)
@@ -25,6 +27,8 @@ public class ParticleManager : Singleton<ParticleManager>
     public void StopParticle()
     {
         hitParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        smoke_1.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        smoke_2.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
     }
 
 }

@@ -20,13 +20,14 @@ public class GameOver : BaseMenu
     {
         base.EnterState();
         Time.timeScale = 0.0f;
-        GameManager.Instance.ResetGame();
-        ParticleManager.Instance.StopParticle();
-        CoroutineManager.Instance.StopAllCoroutines();
 
         SetEndGameImage();
         SetEndGameText();
         SetFinalScoreText();
+
+        GameManager.Instance.ResetGame();
+        ParticleManager.Instance.StopParticle();
+        CoroutineManager.Instance.StopAllCoroutines();       
     }
 
     public override void ExitState()
