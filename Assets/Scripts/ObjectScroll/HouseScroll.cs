@@ -3,9 +3,11 @@ using UnityEngine;
 public class HouseScroll : ObjectScroll
 {
     public bool hasBeenHit;
-
+    
+    int colorIndex;
     int randSprite;
     [SerializeField] Sprite[] objectSprite;
+    [SerializeField] Sprite[] colorSprite;
     public override void Start()
     {
         speed = 2.0f;
@@ -14,9 +16,9 @@ public class HouseScroll : ObjectScroll
         if (sr)
         {
             randSprite = Random.Range(0, objectSprite.Length);
+            colorIndex = randSprite;
             sr.sprite = objectSprite[randSprite];
         }
-
     }
 
     public override void Update()
@@ -31,9 +33,14 @@ public class HouseScroll : ObjectScroll
         if (sr)
         {
             randSprite = Random.Range(0, objectSprite.Length);
+            colorIndex = randSprite;
             sr.sprite = objectSprite[randSprite];
         }
+    }
 
+    public void SetColor()
+    {
+        sr.sprite = colorSprite[colorIndex];
     }
     
 }

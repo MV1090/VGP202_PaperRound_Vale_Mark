@@ -147,4 +147,5 @@ MonoBehaviour:
   speed: 7.5
   rotationSpeed: 5
   rotationAmount: -1.5
+  hitParticle: {fileID: 4524381915916939744, guid: f8c9c889b0d18ec40877c862b22ba20b, type: 3}
   hitSound: {fileID: 8300000, guid: 0241fbc134ab216469c24224632b6984, type: 3}

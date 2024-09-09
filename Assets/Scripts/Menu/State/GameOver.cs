@@ -20,8 +20,10 @@ public class GameOver : BaseMenu
     {
         base.EnterState();
         Time.timeScale = 0.0f;
-        GameManager.Instance.ResetCarSpeed();
+        GameManager.Instance.ResetGame();
+        ParticleManager.Instance.StopParticle();
         CoroutineManager.Instance.StopAllCoroutines();
+
         SetEndGameImage();
         SetEndGameText();
         SetFinalScoreText();

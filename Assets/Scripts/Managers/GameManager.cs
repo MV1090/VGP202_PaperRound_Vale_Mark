@@ -59,7 +59,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         gameOver = false;
-        activeBonus = ActiveBonus.Normal;
+        
         audioSource = GetComponent<AudioSource>();
 
         audioSource.clip = gameMusic;
@@ -68,7 +68,7 @@ public class GameManager : Singleton<GameManager>
         minutesScore = 59;
         secondsScore = 59;
 
-        ResetCarSpeed();
+        ResetGame();
     }
 
     private void Update() 
@@ -86,10 +86,8 @@ public class GameManager : Singleton<GameManager>
                 return;
             audioSource.clip = cowCatcherMusic;
             audioSource.Play();
-        }
-
-        if (gameOver == true)
-            SetHighScores();
+        }               
+            
     }
 
     private void FixedUpdate()
@@ -110,10 +108,12 @@ public class GameManager : Singleton<GameManager>
 
        carSpeed = Mathf.Lerp(startSpeed, endSpeed, t);    
     }
-    public void ResetCarSpeed()
+    public void ResetGame()
     {
         carSpeed = startSpeed;
         timeElapsed = 0;
+        activeBonus = ActiveBonus.Normal;
+        SetHighScores();
 
         Debug.Log(carSpeed.ToString() + " " + timeElapsed.ToString());
     }

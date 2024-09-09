@@ -11,6 +11,7 @@ public class Newspaper : Projectile
     [SerializeField] float speed;
     [SerializeField] float rotationSpeed;
     [SerializeField] float rotationAmount;
+    
 
     [SerializeField] AudioClip hitSound;
 
@@ -108,15 +109,14 @@ public class Newspaper : Projectile
                 //ObjectPooler.Instance.ReturnToPool(gameObject);
                 //ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();
                 return;
-            }               
-
-
+            }           
 
             collision.gameObject.GetComponent<HouseScroll>().hasBeenHit = true;
+            collision.gameObject.GetComponent<HouseScroll>().SetColor();
 
             GameModeManager.Instance.GameModeScoreSet();
-            AudioClipManager.Instance.audioSource.PlayOneShot(hitSound);
-            //GameManager.Instance.score ++;
+            AudioClipManager.Instance.audioSource.PlayOneShot(hitSound);            
+            ParticleManager.Instance.PlayHitParticle(transform);
             Destroy(gameObject);
             //ObjectPooler.Instance.ReturnToPool(gameObject);
             //ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();
