@@ -18,7 +18,7 @@ public class GameState : BaseMenu
         if (GameModeManager.Instance.mode == GameModeManager.GameMode.TimedMode)
         {
             Debug.Log("Timed mode set");
-            GameManager.Instance.score = 25;
+            GameManager.Instance.score = GameManager.Instance.timeModeStartValue;
             GameModeManager.Instance.currentTime = 0;
         }
         else

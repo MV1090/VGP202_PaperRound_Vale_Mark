@@ -15,7 +15,7 @@ public class PlayerMovement : SwipeDetection
 
     int positionIndex;
     public float speed;
-    [Range(0f, 2f)]
+    [Range(0f, 10f)]
     public float angleSpeed;
 
     public float angle;
@@ -96,7 +96,7 @@ public class PlayerMovement : SwipeDetection
             if(lastPosition == PlayerDirection.MovingRight)
                 angle += angleSpeed;
 
-            if (angle <= 2 && angle > 0 || angle >= -2 && angle < 0 )
+            if (angle <= 10 && angle > 0 || angle >= -10 && angle < 0 )
                 angle = 0;
         }
 

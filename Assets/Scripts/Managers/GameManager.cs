@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-
-
-
 public class GameManager : Singleton<GameManager>
 {
 
@@ -20,6 +17,8 @@ public class GameManager : Singleton<GameManager>
     float endSpeed = 8;
     float duration = 120;
     float timeElapsed = 0;
+
+    public int timeModeStartValue;
 
     public enum ActiveBonus
     {

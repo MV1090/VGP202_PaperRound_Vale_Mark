@@ -3702,6 +3702,7 @@ MonoBehaviour:
   gameMusic: {fileID: 8300000, guid: 0be68437d670b594ab19c6491f8348d7, type: 3}
   cowCatcherMusic: {fileID: 8300000, guid: a4b989603c9fc0f47be9ab39a20b0dca, type: 3}
   carSpeed: 0
+  timeModeStartValue: 100
   activeBonus: 0
   minutesScore: 0
   normalModeHighScore: 0
@@ -5157,7 +5158,7 @@ MonoBehaviour:
   destroyCar: {fileID: 8300000, guid: 19f49677a97e8a34a9f0d9d30e4d36ef, type: 3}
   moveSound: {fileID: 8300000, guid: 843ed8dbd36f1fb408160bf248665642, type: 3}
   speed: 7.5
-  angleSpeed: 1.75
+  angleSpeed: 6.35
   angle: 0
   playerMove: 0
 --- !u!212 &749616036

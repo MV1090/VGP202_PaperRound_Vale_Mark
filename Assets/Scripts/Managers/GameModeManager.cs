@@ -72,7 +72,7 @@ public class GameModeManager : Singleton<GameModeManager>
     public void SetTimedMode()
     {
         mode = GameMode.TimedMode;
-        GameManager.Instance.score = 100;
+        GameManager.Instance.score = GameManager.Instance.timeModeStartValue;
         CanvasManager.Instance.timerText.gameObject.SetActive(true);
     }
 
