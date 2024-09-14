@@ -14,10 +14,7 @@ public class Newspaper : Projectile
     
 
     [SerializeField] AudioClip hitSound;
-
-    //public GameObject ObjectGen;
-
-    // Start is called before the first frame update
+    
     public override void Start()
     {
         base.Start();
@@ -31,53 +28,19 @@ public class Newspaper : Projectile
         throwVector = (targetPos - startingPos).normalized * speed;
         Destroy(gameObject, 1);
     }
-
-    //public override void OnEnable()
-    //{
-    //    startingPos = Vector2.zero;
-    //    startingPos = new Vector2(transform.position.x, transform.position.y);
-
-    //    targetPos = PlayerThrow.Instance.touchPos;
-    //    throwVector = (targetPos - startingPos).normalized * speed;
-    //}
-    // Update is called once per frame
+   
 
     public override void Update()
     {
-               
-       setProjectilePos();
-       setProjectileRotation();
+
+        setProjectilePos();
+        setProjectileRotation();
 
         if (GameManager.Instance.gameOver == true)
         {
-            //ObjectPooler.Instance.ReturnToPool(gameObject);
-            //gameObject.SetActive(false);
             Destroy(gameObject);
         }
-
-        //if(OutOfRange() == true)
-        //{
-        //    ObjectPooler.Instance.ReturnToPool(gameObject);
-        //    ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();
-        //}
-    }
-
-    //public bool OutOfRange()
-    //{
-    //    if(transform.position.y > 5)
-    //       return true;
-
-    //    if(transform.position.y < -5)
-    //        return true;
-
-    //    if(transform.position.x > 5)
-    //        return true;
-
-    //    if(transform.position.x < -5) 
-    //        return true;
-
-    //    return false;
-    //}
+    }    
 
     public override void setProjectilePos()
     {
@@ -103,11 +66,8 @@ public class Newspaper : Projectile
         if (collision.gameObject.tag == "OneLeftHouse" || collision.gameObject.tag == "OneRightHouse")
         {
             if (collision.gameObject.GetComponent<HouseScroll>().hasBeenHit == true) 
-            {                
-                Debug.Log("House has been hit");
-                Destroy(gameObject);
-                //ObjectPooler.Instance.ReturnToPool(gameObject);
-                //ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();
+            {            
+                Destroy(gameObject);                
                 return;
             }           
 
@@ -117,18 +77,8 @@ public class Newspaper : Projectile
             GameModeManager.Instance.GameModeScoreSet();
             AudioClipManager.Instance.audioSource.PlayOneShot(hitSound);            
             
-            Destroy(gameObject);
-            //ObjectPooler.Instance.ReturnToPool(gameObject);
-            //ObjectGen.GetComponent<ObjectGen>().RemoveActiveLevelPiece();
-            Debug.Log("Hit House");
+            Destroy(gameObject);        
+            
         }
-    }
-    //public GameObject FindTag(GameObject obj)
-    //{
-    //    if (obj.tag.Contains("News"))
-    //        obj = GameObject.Find("NewsPaperGen");
-
-    //    return obj;   
-    
-    //}
+    }    
 }

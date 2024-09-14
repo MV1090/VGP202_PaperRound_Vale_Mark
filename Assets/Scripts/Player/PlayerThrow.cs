@@ -59,8 +59,7 @@ public class PlayerThrow : Singleton<PlayerThrow>
         if (Vector2.Distance(startPos, endPos) <= minDist)
         {
             if (startPos.x > transform.position.x)
-            {
-                Debug.Log("Player Tapped right");
+            {                
                 //newsPaper.spawnPoint = spawnRight;
                 //newsPaper.SpawnLevelPiece();
                 if(GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
@@ -72,7 +71,6 @@ public class PlayerThrow : Singleton<PlayerThrow>
 
             if (startPos.x < transform.position.x)
             {
-                Debug.Log("Player Tapped Left");
                 //newsPaper.spawnPoint = spawnLeft;
                 //newsPaper.SpawnLevelPiece();
                 if (GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)

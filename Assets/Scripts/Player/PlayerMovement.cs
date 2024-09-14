@@ -49,6 +49,9 @@ public class PlayerMovement : SwipeDetection
 
     public override void SwipeDirection(Vector2 dir)
     {
+        if (Time.timeScale == 0)
+            return;
+
         base.SwipeDirection(dir);        
 
         if (Vector2.Dot(Vector2.left, dir) >= distThreshold)
