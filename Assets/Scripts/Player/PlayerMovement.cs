@@ -37,6 +37,7 @@ public class PlayerMovement : SwipeDetection
         transform.position = nextMovePos[positionIndex].position;
         playerMove = PlayerDirection.Stationary;
         audioSource = GetComponent<AudioSource>();
+        angle = 0;
     }
 
     public void ResetPlayer()

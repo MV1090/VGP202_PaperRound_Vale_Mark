@@ -1,29 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Newspaper : Projectile
 {
     Vector2 targetPos;
-    Vector2 targetDir;
+   
     Vector2 throwVector = Vector2.zero;
     Vector2 startingPos = Vector2.zero;
-    Vector2 distanceVector;
-    Vector2 currentPos;
+    
+    bool hasLanded;
+    
 
     [SerializeField] float speed;
     [SerializeField] float rotationSpeed;
     [SerializeField] float rotationAmount;    
     [SerializeField] AudioClip hitSound;
            
-    RaycastHit2D hit;
-    LayerMask mask;
-
-
-    float distance;
-    float originalDistance;
-    float distanceThisFrame;
+    
 
     public override void Start()
     {
@@ -33,21 +25,25 @@ public class Newspaper : Projectile
 
         targetPos = PlayerThrow.Instance.touchPos;
         throwVector = (targetPos - startingPos).normalized * speed;
-
-        SetUpRay();
-        CheckForCollision();        
-
+              
         Destroy(gameObject, 1);
-               
+                
     }  
 
     public override void Update()
-    {
-        currentPos = new Vector2(transform.position.x, transform.position.y);
-        CheckDistance();        
+    {      
+        if(hasLanded)
+        {
+            ScrollDownScreen();
+            if (GameManager.Instance.gameOver == true)
+            {
+                Destroy(gameObject);
+            }
+            return;
+        }
+
         setProjectilePos();
-        setProjectileRotation();
-        SetScale();
+        setProjectileRotation();        
 
         if (GameManager.Instance.gameOver == true)
         {
@@ -57,7 +53,15 @@ public class Newspaper : Projectile
 
     public override void setProjectilePos()
     {
-       transform.position += new Vector3(throwVector.x, throwVector.y, 0) * Time.deltaTime;
+        if (transform.position.y >= targetPos.y)
+            hasLanded = true;
+
+        transform.position += new Vector3(throwVector.x, throwVector.y, 0) * Time.deltaTime;
+    }
+
+    void ScrollDownScreen()
+    {
+        transform.position -= new Vector3(0, 1.9f, 0) * Time.deltaTime;
     }
 
     public override void setProjectileRotation()
@@ -94,50 +98,6 @@ public class Newspaper : Projectile
             
         }
     }
-
-    void CheckForCollision()
-    {
-        if (hit)
-        {
-            distance = hit.distance;
-        }
-        else
-            distance = 7;
-
-        originalDistance = distance;
-    }
-
-    void SetUpRay()
-    {
-        mask = LayerMask.GetMask("House");
-        targetDir = (targetPos - startingPos).normalized;
-
-        hit = Physics2D.Raycast(transform.position, targetDir, 10000f, mask);
-
-        Debug.DrawRay(transform.position, targetDir, Color.red, 1000f);
-    }
-
-    void CheckDistance()
-    {        
-        distanceVector = currentPos - startingPos;
-        distanceThisFrame = distanceVector.magnitude;
-        distance -= distanceThisFrame;
-        startingPos = currentPos;
-
-        Debug.Log(distance);
-    }
-
-    void SetScale()
-    {
-        if(distance > originalDistance/2)
-        {
-            gameObject.transform.localScale += new Vector3(0.01f, 0.01f, 0.0f);
-        }
-        else if (distance < originalDistance/2)
-        {
-            gameObject.transform.localScale -= new Vector3(0.01f, 0.01f, 0.0f);
-
-        }
-    }
+       
 
 }

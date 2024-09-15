@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4130937901102281078}
   - component: {fileID: 2434356334179100596}
   - component: {fileID: -456670274725722050}
+  - component: {fileID: 1923279321960998655}
   m_Layer: 0
   m_Name: Newspaper
   m_TagString: NewsPaper
@@ -144,7 +145,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bc: {fileID: 0}
-  speed: 7.5
+  sr: {fileID: 0}
+  speed: 5
   rotationSpeed: 5
   rotationAmount: -1.5
   hitSound: {fileID: 8300000, guid: 0241fbc134ab216469c24224632b6984, type: 3}
+--- !u!114 &1923279321960998655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8720167305526007585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 149aaf57c7461d2478d873810ac3e05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  widthMultiplier: 0.025
+  heightMultiplier: 0.009

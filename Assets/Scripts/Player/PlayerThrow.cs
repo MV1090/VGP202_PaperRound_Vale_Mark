@@ -58,10 +58,12 @@ public class PlayerThrow : Singleton<PlayerThrow>
               
         if (Vector2.Distance(startPos, endPos) <= minDist)
         {
+
+            if (startPos.y < transform.position.y)
+                return;
+
             if (startPos.x > transform.position.x)
-            {                
-                //newsPaper.spawnPoint = spawnRight;
-                //newsPaper.SpawnLevelPiece();
+            {                                
                 if(GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
                     Instantiate(BonusNewspaperPrefab, spawnRight.position, Quaternion.identity);
 
@@ -70,9 +72,7 @@ public class PlayerThrow : Singleton<PlayerThrow>
             }                
 
             if (startPos.x < transform.position.x)
-            {
-                //newsPaper.spawnPoint = spawnLeft;
-                //newsPaper.SpawnLevelPiece();
+            {              
                 if (GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
                     Instantiate(BonusNewspaperPrefab, spawnLeft.position, Quaternion.identity);
 
