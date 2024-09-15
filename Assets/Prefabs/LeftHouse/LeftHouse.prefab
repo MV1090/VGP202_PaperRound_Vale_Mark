@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2964183686796213260}
   - component: {fileID: 5590621894050259824}
   - component: {fileID: 2179140234370330877}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftHouse
   m_TagString: OneLeftHouse
   m_Icon: {fileID: 0}

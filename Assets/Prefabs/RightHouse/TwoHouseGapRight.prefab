@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2049805547989466602}
   - component: {fileID: 4333393957185616335}
   - component: {fileID: 3893438941684966031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TwoHouseGapRight
   m_TagString: TwoHouseGapRight
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
@@ -126,3 +126,4 @@ MonoBehaviour:
   ObjectGen: {fileID: 0}
   hasBeenHit: 0
   objectSprite: []
+  colorSprite: []

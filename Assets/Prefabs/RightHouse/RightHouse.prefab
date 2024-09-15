@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4449502107288769085}
   - component: {fileID: 6725150878464362827}
   - component: {fileID: 5532416279855162411}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightHouse
   m_TagString: OneRightHouse
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.89, y: 4.33}
+    oldSize: {x: 4.51, y: 4.33}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
