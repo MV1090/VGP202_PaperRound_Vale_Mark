@@ -6,6 +6,7 @@ public class ParticleManager : Singleton<ParticleManager>
 {
     [Header("House Hit")]
     [SerializeField] ParticleSystem hitParticle;
+    [SerializeField] ParticleSystem bonusHitParticle;
 
     [Header("Smoke")]
     [SerializeField] ParticleSystem smoke_1;
@@ -24,11 +25,18 @@ public class ParticleManager : Singleton<ParticleManager>
         hitParticle.transform.position = spawnLocation.position;
         hitParticle.Play();
     }
+    public void PlayBonusHitParticle(Transform spawnLocation)
+    {
+        bonusHitParticle.transform.position = spawnLocation.position;
+        bonusHitParticle.Play();
+    }
+
     public void StopParticle()
     {
         hitParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         smoke_1.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         smoke_2.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        bonusHitParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
     }
 
 }

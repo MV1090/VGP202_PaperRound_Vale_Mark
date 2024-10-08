@@ -85,7 +85,7 @@ public class GameManager : Singleton<GameManager>
                 return;
             audioSource.clip = cowCatcherMusic;
             audioSource.Play();
-        }               
+        }              
             
     }
 
@@ -107,6 +107,8 @@ public class GameManager : Singleton<GameManager>
 
        carSpeed = Mathf.Lerp(startSpeed, endSpeed, t);    
     }
+
+    
     public void ResetGame()
     {
         carSpeed = startSpeed;

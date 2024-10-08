@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Newspaper : Projectile
 {
     Vector2 targetPos;
-   
+    Vector2 targetDir;
     Vector2 throwVector = Vector2.zero;
     Vector2 startingPos = Vector2.zero;
     
     bool hasLanded;
-    
+
+    RaycastHit2D hit;
+    LayerMask mask;
 
     [SerializeField] float speed;
     [SerializeField] float rotationSpeed;
@@ -19,11 +22,15 @@ public class Newspaper : Projectile
 
     public override void Start()
     {
-        base.Start();               
-
+        base.Start();
+        SetUpRay();
         startingPos = new Vector2(transform.position.x, transform.position.y);
 
-        targetPos = PlayerThrow.Instance.touchPos;
+        if (hit)
+            targetPos = hit.collider.gameObject.transform.position;
+        else
+            targetPos = PlayerThrow.Instance.touchPos;
+
         throwVector = (targetPos - startingPos).normalized * speed;
               
         Destroy(gameObject, 1);
@@ -61,7 +68,7 @@ public class Newspaper : Projectile
 
     void ScrollDownScreen()
     {
-        transform.position -= new Vector3(0, 1.9f, 0) * Time.deltaTime;
+        transform.position -= new Vector3(0, 1.9f, 0) * Time.deltaTime;        
     }
 
     public override void setProjectileRotation()
@@ -83,8 +90,9 @@ public class Newspaper : Projectile
         if (collision.gameObject.tag == "OneLeftHouse" || collision.gameObject.tag == "OneRightHouse")
         {
             if (collision.gameObject.GetComponent<HouseScroll>().hasBeenHit == true) 
-            {            
-                Destroy(gameObject);                
+            {     
+                Physics2D.IgnoreCollision(bc, collision.gameObject.GetComponent<BoxCollider2D>());
+                //Destroy(gameObject);                
                 return;
             }           
 
@@ -98,6 +106,14 @@ public class Newspaper : Projectile
             
         }
     }
-       
+    void SetUpRay()
+    {
+        mask = LayerMask.GetMask("House");
+        targetDir = (targetPos - startingPos).normalized;
+
+        hit = Physics2D.Raycast(transform.position, targetDir, 1000f, mask);
+
+        Debug.DrawRay(transform.position, targetDir, Color.red, 1000f);
+    }
 
 }

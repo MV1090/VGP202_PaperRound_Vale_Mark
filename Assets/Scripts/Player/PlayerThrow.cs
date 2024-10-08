@@ -9,6 +9,8 @@ public class PlayerThrow : Singleton<PlayerThrow>
     Vector2 endPos;
     float startTime;
     float endTime;
+
+    [SerializeField]float throwSpawnOffSet;
        
     [SerializeField] Transform spawnLeft;
     [SerializeField] Transform spawnRight;  
@@ -59,24 +61,24 @@ public class PlayerThrow : Singleton<PlayerThrow>
         if (Vector2.Distance(startPos, endPos) <= minDist)
         {
 
-            if (startPos.y < transform.position.y)
+            if (startPos.y < transform.position.y + throwSpawnOffSet)
                 return;
 
             if (startPos.x > transform.position.x)
-            {                                
-                if(GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
-                    Instantiate(BonusNewspaperPrefab, spawnRight.position, Quaternion.identity);
+            {
+                //if (GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
+                //    Instantiate(BonusNewspaperPrefab, spawnRight.position, Quaternion.identity);
 
-                else
+                //else
                     Instantiate(newspaperPrefab, spawnRight.position, Quaternion.identity);                
             }                
 
             if (startPos.x < transform.position.x)
             {              
-                if (GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
-                    Instantiate(BonusNewspaperPrefab, spawnLeft.position, Quaternion.identity);
+                //if (GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
+                //    Instantiate(BonusNewspaperPrefab, spawnLeft.position, Quaternion.identity);
 
-                else
+                //else
                     Instantiate(newspaperPrefab, spawnLeft.position, Quaternion.identity);                
             }
             AudioClipManager.Instance.audioSource.PlayOneShot(throwSound);

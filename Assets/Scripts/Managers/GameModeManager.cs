@@ -96,6 +96,7 @@ public class GameModeManager : Singleton<GameModeManager>
             GameManager.Instance.score++;
         }
 
+
         GameManager.Instance.score++;
     }
 

@@ -38,14 +38,17 @@ public class PlayerMovement : SwipeDetection
         playerMove = PlayerDirection.Stationary;
         audioSource = GetComponent<AudioSource>();
         angle = 0;
+       // audioSource.Play();
     }
 
     public void ResetPlayer()
     {
         positionIndex = 1;
+        angle = 0;
         transform.position = nextMovePos[positionIndex].position;
         playerMove = PlayerDirection.Stationary;
         gameObject.SetActive(true);
+        audioSource.Play();
     }
 
     public override void SwipeDirection(Vector2 dir)
@@ -124,6 +127,7 @@ public class PlayerMovement : SwipeDetection
                 AudioClipManager.Instance.audioSource.PlayOneShot(deathSound);
                 GameManager.Instance.activeBonus = GameManager.ActiveBonus.Normal;
                 GameManager.Instance.gameOver = true;
+                audioSource.Stop();
                 gameState.JumpToGameOver();
                 gameObject.SetActive(false);                
             }

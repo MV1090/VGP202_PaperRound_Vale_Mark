@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameState : BaseMenu
 {
+
+    [SerializeField] GameObject background;
     public override void InitState(MenuController ctx)
     {
         base.InitState(ctx);
@@ -23,11 +25,14 @@ public class GameState : BaseMenu
         }
         else
             GameManager.Instance.score = 0;
+
+        background.SetActive(true);
     }
 
     public override void ExitState()
     {
-        base.ExitState();       
+        base.ExitState();
+        background.SetActive(false);
     }
     public void JumpToGameOver()
     {

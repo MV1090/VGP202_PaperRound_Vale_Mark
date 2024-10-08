@@ -42,6 +42,9 @@ public class HouseScroll : ObjectScroll
     {
         sr.sprite = colorSprite[colorIndex];
         ParticleManager.Instance.PlayHitParticle(transform);
+
+        if(GameManager.Instance.activeBonus == GameManager.ActiveBonus.DoubleScore)
+            ParticleManager.Instance.PlayBonusHitParticle(transform);
     }
     
 }
