@@ -6,6 +6,7 @@ public class GameState : BaseMenu
 {
 
     [SerializeField] GameObject background;
+    public AudioSource audioSource;
     public override void InitState(MenuController ctx)
     {
         base.InitState(ctx);
@@ -27,6 +28,8 @@ public class GameState : BaseMenu
             GameManager.Instance.score = 0;
 
         background.SetActive(true);
+
+        AdManager.Instance.HideBannerAD();
     }
 
     public override void ExitState()

@@ -27,7 +27,8 @@ public class GameOver : BaseMenu
 
         GameManager.Instance.ResetGame();
         ParticleManager.Instance.StopParticle();
-        CoroutineManager.Instance.StopAllCoroutines();       
+        CoroutineManager.Instance.StopAllCoroutines();
+
     }
 
     public override void ExitState()

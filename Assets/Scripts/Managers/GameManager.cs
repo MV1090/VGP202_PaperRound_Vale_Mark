@@ -7,14 +7,14 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent<int> OnScoreValueChanged;
     public UnityEvent<float> OnTimeScoreChanged;
 
-    AudioSource audioSource;
+    public AudioSource audioSource;
 
     [SerializeField] AudioClip gameMusic;
     [SerializeField] AudioClip cowCatcherMusic;
 
     [SerializeField] public float carSpeed;
     float startSpeed = 4;
-    float endSpeed = 8;
+    float endSpeed = 10;
     float duration = 120;
     float timeElapsed = 0;
 

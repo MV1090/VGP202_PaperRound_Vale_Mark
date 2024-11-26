@@ -12,7 +12,9 @@ public class MainMenu : BaseMenu
     public override void EnterState()
     {
         base.EnterState();
-        Time.timeScale = 0.0f;           
+        Time.timeScale = 0.0f; 
+        
+        AdManager.Instance.ShowBannerAD();
     }
 
     public override void ExitState()
