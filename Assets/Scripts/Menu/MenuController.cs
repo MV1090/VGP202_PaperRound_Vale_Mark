@@ -6,7 +6,7 @@ public class MenuController : Singleton<MenuController>
     public BaseMenu[] allMenus;
     public enum MenuStates
     {
-        MainMenu, Settings, Controls, WinScreen, GameOver, GameState, NormalMode, TimedMode, HardMode
+        MainMenu, Settings, Controls, WinScreen, GameOver, GameState, NormalMode, TimedMode, HardMode, LeaderboardMenu, NormalLeaderboard, TimedLeaderboard
     }
 
     private BaseMenu currentState;

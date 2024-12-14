@@ -125,6 +125,7 @@ public class GameManager : Singleton<GameManager>
             if (score > normalModeHighScore)
             {
                 normalModeHighScore = score;
+                System.Threading.Tasks.Task task = LeaderboardManager.Instance.AddScoreNormal(normalModeHighScore); 
             }
         }
         if(GameModeManager.Instance.wonTimedMode == true)
@@ -143,6 +144,7 @@ public class GameManager : Singleton<GameManager>
 
                 minutesScore = GameModeManager.Instance.minutes;
                 secondsScore = GameModeManager.Instance.seconds;
+                System.Threading.Tasks.Task task = LeaderboardManager.Instance.AddScoreTimed(minutesScore, secondsScore);   
                 GameModeManager.Instance.wonTimedMode = false;
             }
         }

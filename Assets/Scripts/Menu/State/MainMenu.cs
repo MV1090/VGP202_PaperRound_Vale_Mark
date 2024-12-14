@@ -44,4 +44,8 @@ public class MainMenu : BaseMenu
     {
         context.SetActiveState(MenuController.MenuStates.HardMode);
     }
+    public void JumpToLeaderboard()
+    {
+        context.SetActiveState(MenuController.MenuStates.LeaderboardMenu);
+    }
 }

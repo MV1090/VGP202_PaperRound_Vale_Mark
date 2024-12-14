@@ -25,6 +25,7 @@ public class CarScroll : ObjectScroll
     private void FixedUpdate()
     {
         speed = GameManager.Instance.carSpeed;
+        rb.velocity = Vector2.down * speed;
     }
 
 
