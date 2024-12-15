@@ -15,15 +15,21 @@ using Unity.VisualScripting;
 
 public class LeaderboardManager : Singleton<LeaderboardManager>
 {
+    [SerializeField] TMP_Text[] playerRankNormal;
+    [SerializeField] TMP_Text _playerRankNormal;
+    [SerializeField] TMP_Text[] playerNameNormal;
+    [SerializeField] TMP_Text _playerNameNormal;
     [SerializeField] TMP_Text[] playerScoreNormal;
     [SerializeField] TMP_Text _playerScoreNormal;
 
+    [SerializeField] TMP_Text[] playerRankTimed;
+    [SerializeField] TMP_Text _playerRankTimed;
+    [SerializeField] TMP_Text[] playerNameTimed;
+    [SerializeField] TMP_Text _playerNameTimed;
     [SerializeField] TMP_Text[] playerScoreTimed;
     [SerializeField] TMP_Text _playerScoreTimed;
     // Start is called before the first frame update
-    async void Start()
-    {
-        
+    async void Start()    {
         await InitializeServices();
         await SignInAnonymously();
         UpdateScoresNormal();
@@ -44,11 +50,13 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
         {            
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
-            string name = await AuthenticationService.Instance.GetPlayerNameAsync();
+            //string name = await AuthenticationService.Instance.GetPlayerNameAsync();
 
-            if (name.Length > 5)
+            while(AuthenticationService.Instance.PlayerName.Length > 15)
             {
-                Debug.Log("New name needed");
+                
+                await AuthenticationService.Instance.UpdatePlayerNameAsync(RandomNameGenerator.Instance.RandomName());                 
+
             }
         }
     }
@@ -67,16 +75,18 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
         LeaderboardEntry result = await LeaderboardsService.Instance.GetPlayerScoreAsync("Timed_Leaderboard");
         Debug.Log(JsonConvert.SerializeObject(result));
 
-        UpdateTimedText(_playerScoreTimed, result);
+        UpdateTimedText(_playerRankTimed ,_playerNameTimed ,_playerScoreTimed, result);
         GetTimedTopTenScores();
     }
 
-    public void UpdateTimedText(TMP_Text textToUpdate, LeaderboardEntry result)
+    public void UpdateTimedText(TMP_Text rankToUpdate, TMP_Text nameToUpdate, TMP_Text scoreToUpdate, LeaderboardEntry result)
     {
         float minutes = Mathf.Floor(result.Score.ConvertTo<float>() / 60);
         float seconds = Mathf.Floor(result.Score.ConvertTo<float>() % 60);
 
-        textToUpdate.text = (result.Rank + 1) + "     " + result.PlayerName + "   " + string.Format("{00:00} : {1:00}", minutes, seconds);
+        rankToUpdate.text = result.Rank + 1.ToString();
+        nameToUpdate.text = result.PlayerName;
+        scoreToUpdate.text = string.Format("{00:00} : {1:00}", minutes, seconds);
     }
 
     public async void GetTimedTopTenScores()
@@ -89,7 +99,7 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
             if(scoresResponse.Results[i] == null)
                 continue;
 
-            UpdateTimedText(playerScoreTimed[i], scoresResponse.Results[i]);
+            UpdateTimedText(playerRankTimed[i], playerNameTimed[i], playerScoreTimed[i], scoresResponse.Results[i]);
         };
     }
 
@@ -106,13 +116,15 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
         LeaderboardEntry result = await LeaderboardsService.Instance.GetPlayerScoreAsync("High_Scores");
         Debug.Log(JsonConvert.SerializeObject(result));
 
-        UpdateNormalText(_playerScoreNormal, result);
+        UpdateNormalText(_playerRankNormal, _playerNameNormal, _playerScoreNormal, result);
         GetNormalTopTenScores();
     }
 
-    public void UpdateNormalText(TMP_Text textToUpdate, LeaderboardEntry result)
+    public void UpdateNormalText(TMP_Text rankToUpdate, TMP_Text nameToUpdate, TMP_Text scoreToUpdate, LeaderboardEntry result)
     {
-        textToUpdate.text = (result.Rank + 1) + "     " + result.PlayerName + "   " + result.Score;
+        rankToUpdate.text = result.Rank + 1.ToString();
+        nameToUpdate.text = result.PlayerName;
+        scoreToUpdate.text = result.Score.ToString();
     }
 
     public async void GetNormalTopTenScores()
@@ -125,8 +137,7 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
             if (scoresResponse.Results[i] == null)
                 continue;
 
-            UpdateNormalText(playerScoreNormal[i], scoresResponse.Results[i]);
-
+            UpdateNormalText(playerRankNormal[i], playerNameNormal[i] ,playerScoreNormal[i], scoresResponse.Results[i]);
         };
     }
 
