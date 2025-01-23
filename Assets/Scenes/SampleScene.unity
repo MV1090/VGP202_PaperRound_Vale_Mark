@@ -6648,7 +6648,7 @@ MonoBehaviour:
   gameMusic: {fileID: 8300000, guid: 0be68437d670b594ab19c6491f8348d7, type: 3}
   cowCatcherMusic: {fileID: 8300000, guid: a4b989603c9fc0f47be9ab39a20b0dca, type: 3}
   carSpeed: 0
-  timeModeStartValue: 50
+  timeModeStartValue: 100
   activeBonus: 0
   minutesScore: 0
   normalModeHighScore: 0
